@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --login-bg-color: #F3E4E1;
+    --dark-green: #0E927D;
+    --font-family-welcome: "PT Serif", serif;
+    --font-family-login-text: "Work Sans", sans-serif;
+    --airbean-brown: #2F2926;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: auto auto;
+    width: 375px;
+}
+
+.nav-menu {
+    display: flex;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.hamburger-menu {
+    align-self: center;
+    margin: auto;
+}
+
+.content-wrapper {
+    width: fit-content;
+    background-color: var(--airbean-brown);
+    padding-bottom: 1rem;
+}
+
+.header {
+    background-image: url('../Assets/graphics-header.svg');
+    background-repeat: no-repeat;
+    padding: 1rem 0rem 1rem 1rem;
+    height: 115px;
+}
+
+.login-form {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    background-color: var(--login-bg-color);
+    margin-top: -25px;
+    border-radius: 3px;
+}
+
+.login-form__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+.small-logo {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    margin-top: 1rem;
+}
+
+.login-form__welcome {
+    text-align: center;
+    font-family: var(--font-family-welcome);
+    font-size: 32px;
+}
+.login-form__additional-text {
+    text-align: center;
+    font-family: var(--font-family-login-text);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+label {
+    margin-top: 1rem;
+    margin-bottom: .2rem;
+    display: flex;
+    align-items: center;
+    font-size: large;
+    font-family: var(--font-family-login-text);
+}
+
+.text-field {
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 6px;
+    background-color: var(--login-bg-color);
+}
+
+.gdpr-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid black;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: .5rem;
+}
+
+.gdpr-btn:checked {
+    content: '';
+    clip-path: circle(50% at 50% 50%);
+    background-color: var(--dark-green);
+    padding: 2px;
+}
+
+.login-btn {
+    font-weight: 600;
+    margin-top: 1rem;
+    border: none;
+    background-color: var(--airbean-brown);
+    color: white;
+    border-radius: 5rem;
+    padding: 2rem 2rem 2rem 2rem;
+    cursor: pointer;
+    font-size: larger;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-family-welcome);
+}
