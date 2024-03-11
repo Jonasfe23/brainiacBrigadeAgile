@@ -1,9 +1,11 @@
 import apiModule from "./apiModule.js";
 import localStorageModule from "./localStorageModule.js";
 
-window.addEventListener(`DOMContentLoaded`, ()=> {
+window.addEventListener(`DOMContentLoaded`, () => {
+    // Eventlystnare osv här inne.
     localStorageModule.getMenu;
     menuToStorage ()
+    populateMenu()
 })
 
 async function menuToStorage () {
@@ -30,15 +32,11 @@ async function menuToStorage () {
         console.log(`Something went wrong at menuToStorage ` + error);
 }}
 
-window.addEventListener(`DOMContentLoaded`, () => {
-    // Eventlystnare osv här inne.
-    populateMenu()
-})
+
 
 async function populateMenu() {
     try {
-        const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanproducts.json`);
-        const menu = data.menu;
+        const menu = localStorageModule.getMenu();
 
         const bodyRef = document.querySelector(`body`);
 
