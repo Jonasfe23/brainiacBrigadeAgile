@@ -102,6 +102,9 @@ label {
     border-radius: 6px;
     background-color: var(--login-bg-color);
 }
+.text-field:focus {
+    background-color: var(--login-bg-color);
+}
 
 .gdpr-btn {
     width: 20px;
