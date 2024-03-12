@@ -2,7 +2,8 @@ import apiModule from "./apiModule.js";
 import localStorageModule from "./localStorageModule.js";
 
 window.addEventListener(`DOMContentLoaded`, ()=> {
-    menuToStorage ()
+    menuToStorage()
+    usersToStorage()
 })
 
 async function menuToStorage () {
@@ -23,4 +24,26 @@ async function menuToStorage () {
         
     } catch (error) {
         console.log(`Something went wrong at menuToStorage ` + error);
-}}
+    }   
+}
+
+async function usersToStorage () {
+
+    try {  
+
+        let users = localStorageModule.getUsers();
+        const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
+        const checkForDuplicate = users.some(user => user.name === data.users.name);
+        
+        if (!checkForDuplicate && users.length < 1){
+            data.users.forEach(user => {
+                users.push(user)
+            })
+        } 
+
+        localStorage.setItem(`users`, JSON.stringify(users));
+        
+    } catch (error) {
+        console.log(`Something went wrong at usersToStorage ` + error);
+    }   
+}
