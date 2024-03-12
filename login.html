@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbeans Login</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <section class="header">
+            <nav class="nav-menu">
+                <img src="./Assets/navicon.svg" alt="Nav icon" class="hamburger-menu">
+            </nav>
+        </section>
+        <section class="login-form" id="loginForm">
+
+            <section class="login-form__inner">
+                <img src="./Assets/logo-sml.svg" alt="Small logo" class="login-form__small-logo">
+                <h2 class="login-form__welcome">Välkommen till Airbean-familjen!</h2>
+                <h3 class="login-form__additional-text">Genom att skapa ett konto nedan kan du se och spara din orderhistorik</h3>
+                <form>
+                    <label for="username">Användarnamn:</label>
+                    <input class="login-form__text-field" type="login-form__text" name="username" required>
+
+                    <label for="password">Lösenord:</label>
+                    <input class="login-form__text-field" type="text" name="password" required>
+
+                    <label>
+                        <input class="login-form__gdpr-btn" type="checkbox" name="gdpr"> GDPR ok!
+                    </label>
+
+                    <a href="register.html" class="login-form__register">Inget konto? Registrera här!</a>
+
+                    <button class="login-form__login-btn" type="submit">Brew me a cup!</button>
+                </form>
+            </section>
+        </section>
+    </div>
+
+    <script type="module" src="./scripts/app.js"></script>
+</body>
+
+</html>
