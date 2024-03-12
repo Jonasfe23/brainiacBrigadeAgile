@@ -12,6 +12,7 @@ function getMenu() {
 }
 
 function getUsers() {
+
     try {
         const usersString = localStorage.getItem(`users`) || JSON.stringify([]);
         const users = JSON.parse(usersString);
@@ -23,4 +24,6 @@ function getUsers() {
     }
 }
 
+
 export default {getMenu, getUsers}
+
