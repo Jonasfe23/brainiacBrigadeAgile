@@ -18,7 +18,7 @@ function getUsers() {
         return users;
 
     } catch (error) {
-        console.log(`Something went wrong at getMenu ` + error);
+        console.log(`Something went wrong at getUsers` + error);
         return [];
     }
 }
