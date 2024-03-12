@@ -1,0 +1,155 @@
+
+.productpage{
+    background-color: rgba(253, 225, 230, 0.617);
+    margin: 0;
+    padding: 0;
+}
+
+.productpage__buttons {
+    display: flex;
+    justify-content: space-between;
+    background-image: url('../Assets/graphics-header.svg'); 
+    height: 100px;
+    width: 100%;
+}
+
+
+
+.productpage__navbutton{
+    height: 15px;
+    width: 15px;
+    padding: 15px;
+    margin: 10px;
+    background-color: rgb(251, 251, 251);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.productpage__cartbutton{
+    height: 15px;
+    width: 15px;
+    padding: 15px;
+    margin: 10px;
+    background-color: rgb(43, 31, 31);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productpage__menytitle {
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0; 
+}
+
+
+.edit-menu-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.edit-menu-btn {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+.edit-menu-btn:hover {
+    background-color: #45a049;
+}
+
+
+.edit-menu-btn:active {
+    background-color: #3e8e41;
+}
+
+.d-none {
+    display: none;
+}
+
+
+
+.footer{
+    position: relative; 
+    bottom: 0; 
+    width: 100%; 
+    height: 80px; 
+    background-image: url('../Assets/graphics-footer.svg');
+    background-size: cover; 
+}
+
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.menu-list__list-item {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem; 
+}
+
+.menu-list__price {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.menu-list__coffe-title {
+    font-size: 1.8rem;
+    margin: 0; 
+}
+
+.menu-list__about-coffee {
+    font-size: 1rem;
+    margin: 0; 
+    width: 65%;
+}
+
+.menu-list__add-button {
+    width: 20px;
+    height: 20px;
+    padding: 8px; 
+    background-color: rgb(24, 23, 23); 
+    border-radius: 50%; 
+    display: inline-block; 
+    vertical-align: center; 
+    
+}
+
+
+
+
+
+
+
+
+
