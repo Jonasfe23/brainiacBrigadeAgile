@@ -26,6 +26,7 @@ body {
     width: 45px;
     border-radius: 50%;
     background-color: white;
+    cursor: pointer;
 }
 
 .hamburger-menu {
@@ -73,12 +74,14 @@ body {
     text-align: center;
     font-family: var(--font-family-welcome);
     font-size: 32px;
+    color: var(--airbean-brown);
 }
 .login-form__additional-text {
     text-align: center;
     font-family: var(--font-family-login-text);
     font-weight: 400;
     font-size: 16px;
+    color: var(--airbean-brown);
 }
 
 form {
@@ -94,6 +97,7 @@ label {
     align-items: center;
     font-size: large;
     font-family: var(--font-family-login-text);
+    color: var(--airbean-brown);
 }
 
 .text-field {
@@ -101,6 +105,7 @@ label {
     border: 2px solid black;
     border-radius: 6px;
     background-color: var(--login-bg-color);
+    color: var(--airbean-brown);
 }
 .text-field:focus {
     background-color: var(--login-bg-color);
@@ -124,6 +129,12 @@ label {
     clip-path: circle(50% at 50% 50%);
     background-color: var(--dark-green);
     padding: 2px;
+}
+
+.login-form__register {
+    font-family: var(--font-family-login-text);
+    color: var(--airbean-brown);
+    margin-top: .5rem;
 }
 
 .login-btn {
