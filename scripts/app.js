@@ -1,6 +1,6 @@
 import apiModule from "./apiModule.js";
 import localStorageModule from "./localStorageModule.js";
-import logInModule from "./logInModule.js"
+import logInModule from "./logInModule.js";
 
 window.addEventListener(`DOMContentLoaded`, ()=> {
     menuToStorage ()

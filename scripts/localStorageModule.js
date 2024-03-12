@@ -11,4 +11,16 @@ function getMenu() {
     }
 }
 
+export function getUsers() {
+    try {
+        const usersString = localStorage.getItem(`users`) || JSON.stringify([]);
+        const users = JSON.parse(usersString);
+        return users;
+
+    } catch (error) {
+        console.log(`Something went wrong at getMenu ` + error);
+        return [];
+    }
+}
+
 export default {getMenu}

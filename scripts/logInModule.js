@@ -1,18 +1,14 @@
 //funcLogin
 
-async function login(username, password) {
+import { getUsers } from './localStorageModule.js';
+
+export default async function login(username, password) {
     try {
-        const response = await fetch('https://santosnr6.github.io/Data/airbeanusers.json');
-
-        if (!response.ok) {
-            throw new Error('Problem med att hämta info: ' + response.status);
-        }
-
-        const users = (await response.json())?.users;
+        const users = getUsers(); 
+        
         const user = users.find(user => user.username === username && user.password === password);
 
         if (user) {
-            console.log('Inloggning lyckades:', user);
             return user;
         } else {
             throw new Error('Felaktigt användarnamn eller lösenord.');
@@ -22,8 +18,6 @@ async function login(username, password) {
         return null;
     }
 }
-
-export default login
 
 const usernameInput = document.querySelector('input[name="username"]');
 const passwordInput = document.querySelector('input[name="password"]');
@@ -45,7 +39,7 @@ loginForm.addEventListener('submit', async (event) => {
     
     if (user) {
         console.log('Välkommen till Airbean-familjen, ' + user.username + '!');
-        window.location.href = 'profil.html'; 
+        //window.location.href = 'profil.html'; 
     } else {
         alert('Felaktigt användarnamn eller lösenord. Försök igen.');
     }
