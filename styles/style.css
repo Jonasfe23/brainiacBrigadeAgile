@@ -69,6 +69,7 @@ body {
     width: 45px;
     border-radius: 50%;
     background-color: white;
+    cursor: pointer;
 }
 
 .hamburger-menu {
@@ -105,7 +106,7 @@ body {
     padding: 1rem 1rem 1rem 1rem;
 }
 
-.small-logo {
+.login-form__small-logo {
     width: 30px;
     height: 30px;
     align-self: center;
@@ -116,12 +117,14 @@ body {
     text-align: center;
     font-family: var(--font-family-welcome);
     font-size: 32px;
+    color: var(--airbean-brown);
 }
 .login-form__additional-text {
     text-align: center;
     font-family: var(--font-family-login-text);
     font-weight: 400;
     font-size: 16px;
+    color: var(--airbean-brown);
 }
 
 form {
@@ -137,19 +140,21 @@ label {
     align-items: center;
     font-size: large;
     font-family: var(--font-family-login-text);
+    color: var(--airbean-brown);
 }
 
-.text-field {
+.login-form__text-field {
     padding: 1rem;
     border: 2px solid black;
     border-radius: 6px;
     background-color: var(--login-bg-color);
+    color: var(--airbean-brown);
 }
-.text-field:focus {
+.login-form__text-field:focus {
     background-color: var(--login-bg-color);
 }
 
-.gdpr-btn {
+.login-form__gdpr-btn {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -162,14 +167,20 @@ label {
     margin-right: .5rem;
 }
 
-.gdpr-btn:checked {
+.login-form__gdpr-btn:checked {
     content: '';
     clip-path: circle(50% at 50% 50%);
     background-color: var(--dark-green);
     padding: 2px;
 }
 
-.login-btn {
+.login-form__register {
+    font-family: var(--font-family-login-text);
+    color: var(--airbean-brown);
+    margin-top: .5rem;
+}
+
+.login-form__login-btn {
     font-weight: 600;
     margin-top: 1rem;
     border: none;
