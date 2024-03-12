@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #38846d;
+    margin: auto auto;
+    width: 375px;
+}
+
+.landingPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.landingPage::before, .landingPage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    z-index: 10;
+}
+
+.landingPage::before {
+    left: 0;
+    background-image: url(../Assets/intro-graphic-left.svg);
+    background-position: bottom right; 
+}
+
+.landingPage::after {
+    right: 0;
+    background-image: url(../Assets/intro-graphic-right.svg);
+    background-position: bottom right;
+}
+
+.landingPage_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 257px;  
+    z-index: 20;
+    position: relative;
+}
