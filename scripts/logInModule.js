@@ -2,7 +2,7 @@
 
 import { getUsers } from './localStorageModule.js';
 
-export default async function login(username, password) {
+export async function login(username, password) {
     try {
         const users = getUsers();
 

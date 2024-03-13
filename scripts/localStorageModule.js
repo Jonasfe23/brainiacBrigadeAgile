@@ -1,5 +1,5 @@
 
-function getMenu() {
+export function getMenu() {
     try {
         const menuString = localStorage.getItem(`menu`) || JSON.stringify([]);
         const menu = JSON.parse(menuString);
@@ -19,12 +19,12 @@ export function getUsers() {
         return users;
 
     } catch (error) {
-        console.log(`Something went wrong at getMenu ` + error);
+        console.log(`Something went wrong at getUsers` + error);
         return [];
     }
 }
 
-function saveUser(user) {
+export function saveUser(user) {
     try {
         
         let users = getUsers();
@@ -36,6 +36,4 @@ function saveUser(user) {
     }
 }
 
-
-export default {getMenu, getUsers, saveUser}
 

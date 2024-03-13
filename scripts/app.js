@@ -1,16 +1,61 @@
 import apiModule from "./apiModule.js";
-import localStorageModule from "./localStorageModule.js";
+
+import { getMenu, getUsers, saveUser} from "./localStorageModule.js";
 
 window.addEventListener(`DOMContentLoaded`, () => {
-    menuToStorage()
-    usersToStorage()
+    usersToStorage();
+    menuToStorage();
+
+    if (document.location.pathname.endsWith("register.html")) {
+
+        const registerForm = document.querySelector('#registerForm');
+        console.log(registerForm);
+        registerForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+        const regUsername = document.querySelector('input[name="regUsername"]').value;
+        const regPassword = document.querySelector('input[name="regPassword"]').value;
+        const regConfirmPassword = document.querySelector('input[name="regConfirmPassword"]').value;
+
+        if (regPassword !== regConfirmPassword) {
+            alert('The passwords do not match. Please try again.');
+            return;
+        }
+        register(regUsername, regPassword);
+        });
+    }
+    if (document.location.pathname.endsWith("ProductPage.html")) {
+        populateMenu();
+    }
 })
+
+
+async function usersToStorage() {
+
+    try {  
+
+        let users = getUsers();
+        const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
+        const checkForDuplicate = users.some(user => user.name === data.users.name);
+        
+        if (!checkForDuplicate && users.length < 1){
+            data.users.forEach(user => {
+                users.push(user)
+            })
+        } 
+
+        localStorage.setItem(`users`, JSON.stringify(users));
+        
+    } catch (error) {
+        console.log(`Something went wrong at usersToStorage ` + error);
+    }   
+}
 
 async function menuToStorage() {
 
     try {
 
-        let menu = localStorageModule.getMenu();
+        let menu = getMenu();
         const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanproducts.json`);
         const checkForDuplicate = menu.some(menuItem => menuItem.name === data.menu.name);
 
@@ -21,37 +66,60 @@ async function menuToStorage() {
         }
 
         localStorage.setItem(`menu`, JSON.stringify(menu));
-
+        
     } catch (error) {
         console.log(`Something went wrong at menuToStorage ` + error);
     }
+
 }
 
-async function usersToStorage() {
 
+function populateMenu() {
     try {
+        const menu = getMenu();
 
-        let users = localStorageModule.getUsers();
-        const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
-        const checkForDuplicate = users.some(user => user.name === data.users.name);
+        const menuContainerRef = document.querySelector(`#menuList`);
 
-        if (!checkForDuplicate && users.length < 1) {
-            data.users.forEach(user => {
-                users.push(user)
-            })
-        }
+        menu.forEach(coffee => {
+            const coffeeWrapperRef = document.createElement(`li`);
+            coffeeWrapperRef.classList.add(`menu-list__list-item`)
 
-        localStorage.setItem(`users`, JSON.stringify(users));
+            const buyButtonRef = document.createElement(`img`);
+            buyButtonRef.classList.add(`menu-list__add-button`)
+            // sendToCart existerar inte än 
+            // buyButtonRef.addEventListener(`click` sendToCart); 
+            buyButtonRef.src = '../Assets/add.svg'
+            coffeeWrapperRef.appendChild(buyButtonRef);
+
+            const coffeeTitleRef = document.createElement(`h3`);
+            coffeeTitleRef.classList.add(`menu-list__coffe-title`)
+            coffeeTitleRef.textContent = coffee.title;
+            coffeeWrapperRef.appendChild(coffeeTitleRef);
+
+            const coffeePriceRef = document.createElement(`p`);
+            coffeePriceRef.classList.add(`menu-list__price`);
+            coffeePriceRef.textContent = `${coffee.price} kr`;
+            coffeeWrapperRef.appendChild(coffeePriceRef);
+
+            const coffeeDescriptionRef = document.createElement(`p`);
+            coffeeDescriptionRef.classList.add(`menu-list__about-coffee`)
+            coffeeDescriptionRef.textContent = coffee.desc;
+            coffeeWrapperRef.appendChild(coffeeDescriptionRef);
+
+            menuContainerRef.appendChild(coffeeWrapperRef);
+
+        });
+
 
     } catch (error) {
-        console.log(`Something went wrong at usersToStorage ` + error);
+        console.log(`Error at populateMenu ` + error);
     }
-}
+} 
 
 async function register(regUsername, regPassword) {
     try {
 
-        let localUsers = localStorageModule.getUsers();
+        let localUsers = getUsers();
 
         const externalUserData = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
         const externalUsers = externalUserData.users;
@@ -81,7 +149,7 @@ async function register(regUsername, regPassword) {
 
         localUsers.push(newUser);
 
-        localStorageModule.saveUser(newUser);
+        saveUser(newUser);
 
         alert('Registration was successful!');
 
@@ -90,20 +158,3 @@ async function register(regUsername, regPassword) {
         console.error('Error during registration:', error.message);
     }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    const registerForm = document.querySelector('#registerForm');
-    registerForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const regUsername = document.querySelector('input[name="regUsername"]').value;
-        const regPassword = document.querySelector('input[name="regPassword"]').value;
-        const regConfirmPassword = document.querySelector('input[name="regConfirmPassword"]').value;
-
-        if (regPassword !== regConfirmPassword) {
-            alert('The passwords do not match. Please try again.');
-            return;
-        }
-        register(regUsername, regPassword);
-    });
-});
