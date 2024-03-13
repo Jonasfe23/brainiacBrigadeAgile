@@ -11,7 +11,7 @@ function getMenu() {
     }
 }
 
-function getUsers() {
+export function getUsers() {
 
     try {
         const usersString = localStorage.getItem(`users`) || JSON.stringify([]);
@@ -24,6 +24,18 @@ function getUsers() {
     }
 }
 
+function saveUser(user) {
+    try {
+        
+        let users = getUsers();
+        users.push(user);
+        localStorage.setItem('users', JSON.stringify(users));
+        console.log('User saved in localStorage:', user);
+    } catch (error) {
+        console.error('Something went wrong at localStorage:' + error);
+    }
+}
 
-export default {getMenu, getUsers}
+
+export default {getMenu, getUsers, saveUser}
 
