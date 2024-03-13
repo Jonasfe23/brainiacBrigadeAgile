@@ -96,7 +96,7 @@ function populateMenu() {
             const coffeeTitleRef = document.createElement(`h3`);
             coffeeTitleRef.classList.add(`menu-list__coffe-title`)
             coffeeTitleRef.textContent = coffee.title;
-            
+
             coffeeInfoWrapperRef.appendChild(coffeeTitleRef);
 
             const coffeeDescriptionRef = document.createElement(`p`);
@@ -127,7 +127,7 @@ async function register(regUsername, regPassword) {
     try {
 
         let localUsers = getUsers();
-
+        // ta bort kontroll för externalUser. När sidan laddas så pushas alla användare in i localstorage. Så extra api-anrop är onödiga.
         const externalUserData = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
         const externalUsers = externalUserData.users;
 
@@ -148,12 +148,13 @@ async function register(regUsername, regPassword) {
             alert('You must agree to GDPR to continue.');
             return;
         }
-
+        // Ändra så det följer nycklarna i localstorage, lägg till role: user
         const newUser = {
             regUsername: regUsername,
             regPassword: regPassword
         };
 
+        // gör inte rad 158 och rand 160 samma sak?
         localUsers.push(newUser);
 
         saveUser(newUser);

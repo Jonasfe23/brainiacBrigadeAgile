@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (user) {
             console.log('Välkommen till Airbean-familjen, ' + user.username + '!');
-            //window.location.href = 'profil.html'; 
+            window.location.href = 'ProductPage.html'; 
         } else {
             alert('Felaktigt användarnamn eller lösenord. Försök igen.');
         }
