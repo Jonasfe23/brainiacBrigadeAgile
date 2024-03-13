@@ -24,6 +24,16 @@ export function getUsers() {
     }
 }
 
-
+export function saveUser(user) {
+    try {
+        
+        let users = getUsers();
+        users.push(user);
+        localStorage.setItem('users', JSON.stringify(users));
+        console.log('User saved in localStorage:', user);
+    } catch (error) {
+        console.error('Something went wrong at localStorage:' + error);
+    }
+}
 
 
