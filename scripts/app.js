@@ -35,10 +35,10 @@ async function usersToStorage() {
     try {  
 
         let users = getUsers();
-        const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
-        const checkForDuplicate = users.some(user => user.name === data.users.name);
         
-        if (!checkForDuplicate && users.length < 1){
+        
+        if (users.length < 1){
+            const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
             data.users.forEach(user => {
                 users.push(user)
             })
@@ -56,10 +56,11 @@ async function menuToStorage() {
     try {
 
         let menu = getMenu();
-        const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanproducts.json`);
-        const checkForDuplicate = menu.some(menuItem => menuItem.name === data.menu.name);
 
-        if (!checkForDuplicate && menu.length < 1) {
+
+
+        if (menu.length < 1) {
+            const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanproducts.json`);
             data.menu.forEach(coffee => {
                 menu.push(coffee)
             })
