@@ -44,3 +44,4 @@ loginForm.addEventListener('submit', async (event) => {
         alert('Felaktigt användarnamn eller lösenord. Försök igen.');
     }
 });
+
