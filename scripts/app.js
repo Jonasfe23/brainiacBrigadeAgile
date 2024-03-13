@@ -1,6 +1,7 @@
 import apiModule from "./apiModule.js";
-import localStorageModule from "./localStorageModule.js";
-import logInModule from "./logInModule.js";
+import { getMenu, getUsers} from "./localStorageModule.js";
+
+
 
 window.addEventListener(`DOMContentLoaded`, ()=> {
     usersToStorage();
@@ -19,7 +20,7 @@ async function usersToStorage () {
 
     try {  
 
-        let users = localStorageModule.getUsers();
+        let users = getUsers();
         const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
         const checkForDuplicate = users.some(user => user.name === data.users.name);
         
@@ -40,7 +41,7 @@ async function menuToStorage() {
 
     try {
 
-        let menu = localStorageModule.getMenu();
+        let menu = getMenu();
         const data = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanproducts.json`);
         const checkForDuplicate = menu.some(menuItem => menuItem.name === data.menu.name);
         
@@ -58,9 +59,9 @@ async function menuToStorage() {
 }
 
 
-async function populateMenu() {
+function populateMenu() {
     try {
-        const menu = localStorageModule.getMenu();
+        const menu = getMenu();
 
         const menuContainerRef = document.querySelector(`#menuList`);
 
@@ -68,11 +69,11 @@ async function populateMenu() {
             const coffeeWrapperRef = document.createElement(`li`);
             coffeeWrapperRef.classList.add(`menu-list__list-item`)
 
-            const buyButtonRef = document.createElement(`button`);
+            const buyButtonRef = document.createElement(`img`);
             buyButtonRef.classList.add(`menu-list__add-button`)
             // sendToCart existerar inte än 
             // buyButtonRef.addEventListener(`click` sendToCart); 
-            buyButtonRef.textContent = `+`;
+            buyButtonRef.src = '../Assets/add.svg'
             coffeeWrapperRef.appendChild(buyButtonRef);
 
             const coffeeTitleRef = document.createElement(`h3`);
