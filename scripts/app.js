@@ -6,6 +6,11 @@ window.addEventListener(`DOMContentLoaded`, () => {
     usersToStorage();
     menuToStorage();
 
+    // OBS: TA BORT RAD 9 TILL 13! Endast för att utveckla admin func
+    // if (document.location.pathname.endsWith("index.html")) {
+    //    window.location.href = 'ProductPage.html';
+    //    populateMenu();
+    // }
     if (document.location.pathname.endsWith("login.html")) {
         initLogin();
     }
@@ -13,6 +18,10 @@ window.addEventListener(`DOMContentLoaded`, () => {
         initRegistration();
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
+        document.querySelector(`.cart-icon`).addEventListener(`click`, () => {
+            document.querySelector(`.productpage__cart`).classList.toggle(`d-none`);
+        })
+        
         populateMenu();
         userOrAdmin();
     }
@@ -67,17 +76,20 @@ function populateMenu() {
         const menu = getMenu();
 
         const menuContainerRef = document.querySelector(`#menuList`);
+        menuContainerRef.innerHTML = ``;
 
         menu.forEach(coffee => {
             const menuItemContainerRef = document.createElement(`li`);
             menuItemContainerRef.classList.add(`menu-list__list-item`)
 
-            const buyButtonRef = document.createElement(`img`);
-            buyButtonRef.classList.add(`menu-list__add-button`)
-            buyButtonRef.src = '../Assets/add.svg'
-            // sendToCart existerar inte än 
-            // buyButtonRef.addEventListener(`click` sendToCart); 
-            menuItemContainerRef.appendChild(buyButtonRef);
+            const menuItemButtonRef = document.createElement(`img`);
+            menuItemButtonRef.classList.add(`menu-list__button`, `menu-list__button--add`);
+            menuItemButtonRef.src = '../Assets/add.svg';
+            menuItemButtonRef.alt = "Button to add item to cart";
+            menuItemButtonRef.dataset.coffee = coffee.title;
+            menuItemButtonRef.addEventListener(`click`, sendToCart); 
+
+            menuItemContainerRef.appendChild(menuItemButtonRef);
 
             const coffeeInfoWrapperRef = document.createElement(`div`);
             coffeeInfoWrapperRef.classList.add(`menu-list__info-wrapper`);
@@ -109,6 +121,53 @@ function populateMenu() {
     } catch (error) {
         console.log(`Error at populateMenu ` + error);
     }
+}
+
+export function editMenuToggle () {
+    const editMenuButtonRef = document.querySelector(`.edit-menu-btn`);
+    editMenuButtonRef.classList.toggle(`edit-menu-btn--red`);
+
+    if (document.querySelector(`.edit-menu-btn--red`)) {
+        editMenuButtonRef.textContent = `Avbryt`;
+    }
+    else {
+        editMenuButtonRef.textContent = `Redigera meny`;
+    }
+
+    const menuItemButtons = document.querySelectorAll(`.menu-list__button`);
+    menuItemButtons.forEach(button=> {
+        button.classList.toggle(`menu-list__button--remove`);
+        button.classList.toggle(`menu-list__button--add`);
+            
+        if (button.classList.contains(`menu-list__button--remove`)) {
+            button.src = `../Assets/remove.svg`;
+            button.alt = `Button to remove items from menu`
+            button.removeEventListener(`click`, sendToCart);
+            button.addEventListener(`click`,removeFromMenu);
+        } else {
+            button.src = `../Assets/add.svg`;
+            button.alt = "Button to add item to cart";
+            button.removeEventListener(`click`, removeFromMenu);
+            button.addEventListener(`click`, sendToCart);
+        }
+    });
+}
+
+function sendToCart (event) {
+    const itemToBuy = event.currentTarget.dataset.coffee;
+    console.log(`sendToCart: ` + itemToBuy);
+}
+
+function removeFromMenu(event) {
+    let menu = getMenu();
+
+    const itemToRemove = event.currentTarget.dataset.coffee;
+
+    menu = menu.filter(menuItem => menuItem.title !== itemToRemove);
+
+    localStorage.setItem(`menu`, JSON.stringify(menu));
+    editMenuToggle();
+    populateMenu();
 }
 
 function initLogin () {

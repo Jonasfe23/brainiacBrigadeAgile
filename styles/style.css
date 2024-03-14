@@ -366,9 +366,10 @@ label {
     margin-bottom: 0; 
 }
 
-
+/* Lade till min height på .menu-list så sidan behåller form någorlunda när man tar bort items */
 
 .menu-list {
+    min-height: 66vh;
     padding: 0;
     margin: 10px;
     list-style: none;
@@ -381,17 +382,24 @@ label {
     margin-bottom: 20px;
 }
 
-.menu-list__add-button {
+/* Bröt loss menu-list__button så det finns modifiers också. --add och --remove */
+.menu-list__button {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background-color: #2F2926;
     margin-right: 10px;
     flex-shrink: 0;
     padding: 4px;
     margin: 8px;
     cursor: pointer;
-    
+}
+
+.menu-list__button--add {
+    background-color: #2F2926;
+}
+
+.menu-list__button--remove {
+    background-color: #FF0000;
 }
 
 .menu-list__info-wrapper{
@@ -448,14 +456,20 @@ label {
     border-radius: 4px;
 }
 
-
 .edit-menu-btn:hover {
     background-color: #45a049;
 }
 
-
 .edit-menu-btn:active {
     background-color: #3e8e41;
+}
+
+.edit-menu-btn--red {
+    background-color: red;
+}
+
+.edit-menu-btn--red:hover {
+    background-color: rgb(216, 9, 9);
 }
 
 .d-none {

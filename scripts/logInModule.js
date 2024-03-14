@@ -1,6 +1,7 @@
 //funcLogin
 
 import { getUsers, saveUser} from './localStorageModule.js';
+import { editMenuToggle } from './app.js';
 
 export function login(username, password) {
     try {
@@ -67,6 +68,7 @@ export function userOrAdmin () {
 
             if (editMenuBtn) {
                 editMenuBtn.classList.remove(`d-none`);
+                editMenuBtn.addEventListener(`click`, editMenuToggle);
             } 
         }
     }
