@@ -202,10 +202,9 @@ label {
     background-color: rgba(253, 225, 230, 0.617);
     margin: 0 auto;
     padding: 0;
-    max-width: 350px;
+    max-width: 375px;
     border: 5px solid #2F2926;
     border-radius: 10px;
-
 }
 
 /* header produktPage*/
@@ -216,6 +215,112 @@ label {
     
 }
 
+.productpage__cart {
+    background-color: #ffffff;
+    width: 341px;
+    position: absolute;
+    left: 50%;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+    font-family: var(--font-family-welcome);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productpage__arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 15px solid white;
+    position: absolute;
+    right: 0.5rem;
+    top: -0.8rem;
+}
+
+.productpage__cart-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.productpage__cart-list {
+    list-style-type: none;
+    margin-top: 2.5rem;
+}
+
+.productpage__cart-item {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    width: 296px;
+    margin-bottom: 1.5rem;
+}
+
+.productpage__cart-item-inner-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.productpage__cart-item-inner-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productpage__cart-item-inner-right span {
+    font-size: 14px;
+    padding: .1rem;
+    font-weight: 800;
+}
+.productpage__cart-item-inner-right i {
+    font-size: .5rem;
+    color: var(--airbean-brown);
+}
+
+.productpage__cart-item-title {
+    font-size: 1.2rem;
+}
+
+.productpage__cart-item-price {
+    font-size: .75rem;
+    font-family: var(--font-family-login-text);
+}
+
+.productpage__price-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.productpage__price-section-title, 
+.productpage__price {
+    font-size: 1.5rem;
+    font-family: var(--font-family-welcome);
+}
+
+.productpage__price-section-info {
+    font-size: 12px;
+    font-family: var(--font-family-login-text);
+}
+
+
+
+.productpage__cart-button {
+    margin: 2.5rem 0;
+    background-color: var(--airbean-brown);
+    width: 248px;
+    color: white;
+    border-radius: 4rem;
+    padding: .5rem;
+    font-size: 1.5rem;
+    font-family: var(--font-family-welcome);
+    font-weight: 600;
+}
 
 
 .nav-menu__header {
