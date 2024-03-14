@@ -194,55 +194,134 @@ label {
     justify-content: center;
     font-family: var(--font-family-welcome);
 }
+
+
+
+
 .productpage{
     background-color: rgba(253, 225, 230, 0.617);
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    max-width: 350px;
+    border: 5px solid #2F2926;
+    border-radius: 10px;
+
 }
 
-.productpage__buttons {
-    display: flex;
-    justify-content: space-between;
+/* header produktPage*/
+.productpage__header {
     background-image: url('../Assets/graphics-header.svg'); 
     height: 100px;
     width: 100%;
+    
 }
 
 
 
-.productpage__navbutton{
-    height: 15px;
-    width: 15px;
-    padding: 15px;
-    margin: 10px;
-    background-color: rgb(251, 251, 251);
-    border-radius: 50%;
+.nav-menu__header {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    
 }
 
-
-.productpage__cartbutton{
-    height: 15px;
-    width: 15px;
-    padding: 15px;
+.hamburger-menu__header {
+    height: 35px;
+    width: 35px;
+    padding: 6px;
     margin: 10px;
-    background-color: rgb(43, 31, 31);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    align-self: center;
+    background-color: #fff;
+    color: #2F2926;
+    border-radius: 50px;
+    cursor: pointer;
+    
 }
 
-.productpage__menytitle {
-    font-size: 28px;
+.cart-icon {
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    margin: 10px;
+    align-self: center;
+    background-color: #2F2926;
+    color: #ffffff;
+    border-radius: 50px;
+    cursor: pointer;
+    
+}
+
+
+
+/* productpage pruducts */
+
+.productpage__coffemenu-title {
+    font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin-bottom: 0; 
 }
+
+
+
+.menu-list {
+    padding: 0;
+    margin: 10px;
+    list-style: none;
+}
+
+
+.menu-list__list-item {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 20px;
+}
+
+.menu-list__add-button {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #2F2926;
+    margin-right: 10px;
+    flex-shrink: 0;
+    padding: 4px;
+    margin: 8px;
+    cursor: pointer;
+    
+}
+
+.menu-list__info-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-list__coffe-title {
+    font-size: 1.3rem;
+    margin: 0;
+    color: black;
+    margin-left: 2px;
+}
+
+.menu-list__price {
+    font-size: 1.4rem;
+    font-weight: 550;
+    margin-left: auto; 
+    margin-right: 10px;
+    color: black;
+    text-wrap: nowrap;
+}
+
+
+.menu-list__about-coffee {
+    font-size: 0.8rem;
+    margin: 0;
+    color: black;
+    max-width: 85%;
+    margin-left: 2px;
+}
+
+
 
 
 .edit-menu-button-container {
@@ -292,51 +371,4 @@ label {
 }
 
 
-.menu-list {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 0.5rem;
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.menu-list__list-item {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem; 
-}
-
-.menu-list__price {
-    display: flex;
-    justify-content: space-between; 
-    width: 100%;
-    margin-bottom: 0.5rem;
-    font-size: 1.8rem;
-}
-
-.menu-list__coffe-title {
-    font-size: 1.8rem;
-    margin: 0; 
-}
-
-.menu-list__about-coffee {
-    font-size: 1rem;
-    margin: 0; 
-    width: 65%;
-}
-
-.menu-list__add-button {
-    width: 20px;
-    height: 20px;
-    padding: 8px; 
-    background-color: rgb(24, 23, 23); 
-    border-radius: 50%; 
-    display: inline-block; 
-    vertical-align: center; 
-    
-}
 
