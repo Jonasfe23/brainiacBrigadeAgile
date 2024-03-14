@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --login-bg-color: #F3E4E1;
-    --dark-green: #0E927D;
-    --font-family-welcome: "PT Serif", serif;
-    --font-family-login-text: "Work Sans", sans-serif;
+    /* Colors */
+    --airbean-pink: #F3E4E1;
+    --airbean-green: #0E927D;
+    --airbean-dark-green: #38846D;
     --airbean-brown: #2F2926;
+    --airbean-orange: #E5674E;
+    /* Fonts */
+    --font-family-heading-text: "PT Serif", serif;
+    --font-family-default: "Work Sans", sans-serif;
 }
 
 * {
@@ -15,7 +19,6 @@
 }
 
 body {
-    background-color: #38846d;
     margin: auto auto;
     width: 375px;
 }
@@ -27,6 +30,7 @@ body {
     width: 100%;
     height: 100vh;
     position: relative;
+    background: var(--airbean-green);
 }
 
 .landingPage::before, .landingPage::after {
@@ -62,6 +66,8 @@ body {
     position: relative;
 }
 
+/* Login page */
+
 .nav-menu {
     display: flex;
     height: 45px;
@@ -93,7 +99,7 @@ body {
     display: flex;
     width: 90%;
     margin: auto;
-    background-color: var(--login-bg-color);
+    background-color: var(--airbean-pink);
     margin-top: -25px;
     border-radius: 3px;
 }
@@ -114,13 +120,13 @@ body {
 
 .login-form__welcome {
     text-align: center;
-    font-family: var(--font-family-welcome);
+    font-family: var(--font-family-heading-text);
     font-size: 32px;
     color: var(--airbean-brown);
 }
 .login-form__additional-text {
     text-align: center;
-    font-family: var(--font-family-login-text);
+    font-family: var(--font-family-default);
     font-weight: 400;
     font-size: 16px;
     color: var(--airbean-brown);
@@ -138,7 +144,7 @@ label {
     display: flex;
     align-items: center;
     font-size: large;
-    font-family: var(--font-family-login-text);
+    font-family: var(--font-family-default);
     color: var(--airbean-brown);
 }
 
@@ -146,14 +152,15 @@ label {
     padding: 1rem;
     border: 2px solid black;
     border-radius: 6px;
-    background-color: var(--login-bg-color);
+    background-color: var(--airbean-pink);
     color: var(--airbean-brown);
 }
 .login-form__text-field:focus {
-    background-color: var(--login-bg-color);
+    background-color: var(--airbean-pink);
 }
 
-.login-form__gdpr-btn, .login-form__register-btn {
+.login-form__gdpr-btn, 
+.login-form__register-btn {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -166,15 +173,16 @@ label {
     margin-right: .5rem;
 }
 
-.login-form__gdpr-btn:checked, .login-form__register-btn:checked {
+.login-form__gdpr-btn:checked, 
+.login-form__register-btn:checked {
     content: '';
     clip-path: circle(50% at 50% 50%);
-    background-color: var(--dark-green);
+    background-color: var(--airbean-green);
     padding: 2px;
 }
 
 .login-form__register {
-    font-family: var(--font-family-login-text);
+    font-family: var(--font-family-default);
     color: var(--airbean-brown);
     margin-top: .5rem;
 }
@@ -192,25 +200,26 @@ label {
     align-items: center;
     display: flex;
     justify-content: center;
-    font-family: var(--font-family-welcome);
+    font-family: var(--font-family-heading-text);
 }
 
-
-
-
 .productpage{
-    background-color: rgba(253, 225, 230, 0.617);
     margin: 0 auto;
     padding: 0;
     max-width: 375px;
 }
 
-/* header produktPage*/
-.productpage__header {
-    background-image: url('../Assets/graphics-header.svg'); 
-    height: 100px;
-    width: 100%;
-    
+.productPage__content-wrapper {
+    background-color: var(--airbean-pink);
+}
+
+.productPage__header {
+    background-image: url('../Assets/graphics-header.svg');
+    background-repeat: no-repeat;
+    padding: 1rem 1rem 1rem 1rem;
+    height: 115px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .productpage__cart {
@@ -222,10 +231,11 @@ label {
     left: 50%;
     transform: translateX(-50%);
     padding: 1rem;
-    font-family: var(--font-family-welcome);
+    font-family: var(--font-family-heading-text);
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: .5rem;
 }
 
 .productpage__arrow-up {
@@ -235,7 +245,7 @@ label {
     border-right: 10px solid transparent;
     border-bottom: 15px solid white;
     position: absolute;
-    right: 0.5rem;
+    right: 0.7rem;
     top: -0.8rem;
 }
 
@@ -285,7 +295,7 @@ label {
 
 .productpage__cart-item-price {
     font-size: .75rem;
-    font-family: var(--font-family-login-text);
+    font-family: var(--font-family-default);
 }
 
 .productpage__price-section {
@@ -298,12 +308,12 @@ label {
 .productpage__price-section-title, 
 .productpage__price {
     font-size: 1.5rem;
-    font-family: var(--font-family-welcome);
+    font-family: var(--font-family-heading-text);
 }
 
 .productpage__price-section-info {
     font-size: 12px;
-    font-family: var(--font-family-login-text);
+    font-family: var(--font-family-default);
 }
 
 
@@ -316,8 +326,9 @@ label {
     border-radius: 4rem;
     padding: .5rem;
     font-size: 1.5rem;
-    font-family: var(--font-family-welcome);
+    font-family: var(--font-family-heading-text);
     font-weight: 600;
+    cursor: pointer;
 }
 
 
@@ -341,10 +352,10 @@ label {
 }
 
 .cart-icon {
-    height: 40px;
-    width: 40px;
+    height: 48px;
+    width: 48px;
     padding: 10px;
-    margin: 10px;
+    /* margin: 10px; */
     align-self: center;
     background-color: #2F2926;
     color: #ffffff;
@@ -435,7 +446,7 @@ label {
 }
 
 .edit-menu-btn {
-    background-color: #4CAF50; 
+    background-color: var(--airbean-dark-green); 
     border: none;
     color: white;
     padding: 10px 20px;
@@ -450,7 +461,7 @@ label {
 
 
 .edit-menu-btn:hover {
-    background-color: #45a049;
+    background-color: var(--airbean-green);
 }
 
 
