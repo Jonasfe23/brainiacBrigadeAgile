@@ -150,8 +150,9 @@ async function register(regUsername, regPassword) {
         }
         // Ändra så det följer nycklarna i localstorage, lägg till role: user
         const newUser = {
-            regUsername: regUsername,
-            regPassword: regPassword
+            username: regUsername,
+            password: regPassword,
+            role: `user`
         };
 
         // gör inte rad 158 och rand 160 samma sak?
