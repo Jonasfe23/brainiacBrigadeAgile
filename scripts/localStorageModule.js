@@ -35,5 +35,3 @@ export function saveUser(user) {
         console.error('Something went wrong at localStorage:' + error);
     }
 }
-
-

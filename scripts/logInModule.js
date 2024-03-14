@@ -1,14 +1,17 @@
 //funcLogin
 
-import { getUsers } from './localStorageModule.js';
+import { getUsers, saveUser} from './localStorageModule.js';
 
-export async function login(username, password) {
+export function login(username, password) {
     try {
         const users = getUsers();
 
         const user = users.find(user => user.username === username && user.password === password);
 
         if (user) {
+
+            localStorage.setItem('loggedInUser', JSON.stringify(user)); 
+
             return user;
         } else {
             throw new Error('Felaktigt användarnamn eller lösenord.');
@@ -19,27 +22,52 @@ export async function login(username, password) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.querySelector('#loginForm');
-    loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
+export function register(regUsername, regPassword) {
+    try {
 
-        const username = document.querySelector('input[name="username"]').value;
-        const password = document.querySelector('input[name="password"]').value;
-        const gdprCheckbox = document.querySelector('input[name="gdpr"]');
+        let localUsers = getUsers();
 
-        if (!gdprCheckbox.checked) {
-            alert('Du måste godkänna GDPR för att fortsätta.');
+        const existingLocalUser = localUsers.find(user => user.username === regUsername);
+        if (existingLocalUser) {
+            alert('Username already exists.');
             return;
         }
 
-        const user = await login(username, password);
-
-        if (user) {
-            console.log('Välkommen till Airbean-familjen, ' + user.username + '!');
-            window.location.href = 'ProductPage.html'; 
-        } else {
-            alert('Felaktigt användarnamn eller lösenord. Försök igen.');
+        const gdprCheckbox = document.querySelector('input[name="gdpr"]');
+        if (!gdprCheckbox.checked) {
+            alert('You must agree to GDPR to continue.');
+            return;
         }
-    });
-});
+
+        const newUser = {
+            username: regUsername,
+            password: regPassword,
+            role: `user`
+        };
+
+        saveUser(newUser);
+
+        alert('Registration was successful!');
+
+        window.location.href = 'login.html';
+    } catch (error) {
+        console.error('Error during registration:', error.message);
+    }
+}
+
+export function userOrAdmin () {
+
+    const loggedInUser = JSON.parse(localStorage.getItem(`loggedInUser`));
+
+    if (loggedInUser) {
+
+        if (loggedInUser.role === `admin`) {
+
+            const editMenuBtn = document.querySelector(`.edit-menu-btn`);
+
+            if (editMenuBtn) {
+                editMenuBtn.classList.remove(`d-none`);
+            } 
+        }
+    }
+}
