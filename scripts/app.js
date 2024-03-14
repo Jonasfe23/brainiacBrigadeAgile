@@ -7,22 +7,8 @@ window.addEventListener(`DOMContentLoaded`, () => {
     menuToStorage();
 
     if (document.location.pathname.endsWith("register.html")) {
+        initRegistration()
 
-        const registerForm = document.querySelector('#registerForm');
-
-        registerForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const regUsername = document.querySelector('input[name="regUsername"]').value;
-            const regPassword = document.querySelector('input[name="regPassword"]').value;
-            const regConfirmPassword = document.querySelector('input[name="regConfirmPassword"]').value;
-
-            if (regPassword !== regConfirmPassword) {
-                alert('The passwords do not match. Please try again.');
-                return;
-            }
-            register(regUsername, regPassword);
-        });
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
         populateMenu();
@@ -123,22 +109,31 @@ function populateMenu() {
     }
 } 
 
-async function register(regUsername, regPassword) {
+function initRegistration () {
+    const registerForm = document.querySelector('#registerForm');
+
+    registerForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const regUsername = document.querySelector('input[name="regUsername"]').value;
+        const regPassword = document.querySelector('input[name="regPassword"]').value;
+        const regConfirmPassword = document.querySelector('input[name="regConfirmPassword"]').value;
+
+        if (regPassword !== regConfirmPassword) {
+            alert('The passwords do not match. Please try again.');
+            return;
+        }
+        register(regUsername, regPassword);
+    });
+}
+
+function register(regUsername, regPassword) {
     try {
 
         let localUsers = getUsers();
-        // ta bort kontroll för externalUser. När sidan laddas så pushas alla användare in i localstorage. Så extra api-anrop är onödiga.
-        const externalUserData = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
-        const externalUsers = externalUserData.users;
 
-        const existingLocalUser = localUsers.find(user => user.regUsername === regUsername);
+        const existingLocalUser = localUsers.find(user => user.username === regUsername);
         if (existingLocalUser) {
-            alert('Username already exists.');
-            return;
-        }
-
-        const existingExternalUser = externalUsers.find(user => user.regUsername === regUsername);
-        if (existingExternalUser) {
             alert('Username already exists.');
             return;
         }
@@ -148,15 +143,12 @@ async function register(regUsername, regPassword) {
             alert('You must agree to GDPR to continue.');
             return;
         }
-        // Ändra så det följer nycklarna i localstorage, lägg till role: user
+
         const newUser = {
             username: regUsername,
             password: regPassword,
             role: `user`
         };
-
-        // gör inte rad 158 och rand 160 samma sak?
-        localUsers.push(newUser);
 
         saveUser(newUser);
 
