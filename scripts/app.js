@@ -1,31 +1,20 @@
 import apiModule from "./apiModule.js";
-
-import { getMenu, getUsers, saveUser} from "./localStorageModule.js";
+import { login, register, userOrAdmin } from "./logInModule.js";
+import { getMenu, getUsers} from "./localStorageModule.js";
 
 window.addEventListener(`DOMContentLoaded`, () => {
     usersToStorage();
     menuToStorage();
 
+    if (document.location.pathname.endsWith("login.html")) {
+        initLogin();
+    }
     if (document.location.pathname.endsWith("register.html")) {
-
-        const registerForm = document.querySelector('#registerForm');
-
-        registerForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const regUsername = document.querySelector('input[name="regUsername"]').value;
-            const regPassword = document.querySelector('input[name="regPassword"]').value;
-            const regConfirmPassword = document.querySelector('input[name="regConfirmPassword"]').value;
-
-            if (regPassword !== regConfirmPassword) {
-                alert('The passwords do not match. Please try again.');
-                return;
-            }
-            register(regUsername, regPassword);
-        });
+        initRegistration();
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
         populateMenu();
+        userOrAdmin();
     }
 })
 
@@ -96,7 +85,7 @@ function populateMenu() {
             const coffeeTitleRef = document.createElement(`h3`);
             coffeeTitleRef.classList.add(`menu-list__coffe-title`)
             coffeeTitleRef.textContent = coffee.title;
-            
+
             coffeeInfoWrapperRef.appendChild(coffeeTitleRef);
 
             const coffeeDescriptionRef = document.createElement(`p`);
@@ -114,54 +103,55 @@ function populateMenu() {
             menuItemContainerRef.appendChild(coffeePriceRef);
 
             menuContainerRef.appendChild(menuItemContainerRef);
-
         });
 
 
     } catch (error) {
         console.log(`Error at populateMenu ` + error);
     }
-} 
-
-async function register(regUsername, regPassword) {
-    try {
-
-        let localUsers = getUsers();
-
-        const externalUserData = await apiModule.getData(`https://santosnr6.github.io/Data/airbeanusers.json`);
-        const externalUsers = externalUserData.users;
-
-        const existingLocalUser = localUsers.find(user => user.regUsername === regUsername);
-        if (existingLocalUser) {
-            alert('Username already exists.');
-            return;
-        }
-
-        const existingExternalUser = externalUsers.find(user => user.regUsername === regUsername);
-        if (existingExternalUser) {
-            alert('Username already exists.');
-            return;
-        }
-
-        const gdprCheckbox = document.querySelector('input[name="gdpr"]');
-        if (!gdprCheckbox.checked) {
-            alert('You must agree to GDPR to continue.');
-            return;
-        }
-
-        const newUser = {
-            regUsername: regUsername,
-            regPassword: regPassword
-        };
-
-        localUsers.push(newUser);
-
-        saveUser(newUser);
-
-        alert('Registration was successful!');
-
-        window.location.href = 'login.html';
-    } catch (error) {
-        console.error('Error during registration:', error.message);
-    }
 }
+
+function initLogin () {
+    const loginForm = document.querySelector('#loginForm');
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const username = document.querySelector('input[name="username"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+        const gdprCheckbox = document.querySelector('input[name="gdpr"]');
+
+        if (!gdprCheckbox.checked) {
+            alert('Du måste godkänna GDPR för att fortsätta.');
+            return;
+        }
+
+        const user = login(username, password);
+
+        if (user) {
+            console.log('Välkommen till Airbean-familjen, ' + user.username + '!');
+            window.location.href = 'ProductPage.html'; 
+        } else {
+            alert('Felaktigt användarnamn eller lösenord. Försök igen.');
+        }
+    });
+}
+
+function initRegistration () {
+    const registerForm = document.querySelector('#registerForm');
+
+    registerForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const regUsername = document.querySelector('input[name="regUsername"]').value;
+        const regPassword = document.querySelector('input[name="regPassword"]').value;
+        const regConfirmPassword = document.querySelector('input[name="regConfirmPassword"]').value;
+
+        if (regPassword !== regConfirmPassword) {
+            alert('The passwords do not match. Please try again.');
+            return;
+        }
+        register(regUsername, regPassword);
+    });
+}
+
+
