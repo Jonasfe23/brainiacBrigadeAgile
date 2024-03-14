@@ -153,7 +153,7 @@ label {
     background-color: var(--login-bg-color);
 }
 
-.login-form__gdpr-btn {
+.login-form__gdpr-btn, .login-form__register-btn {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -166,7 +166,7 @@ label {
     margin-right: .5rem;
 }
 
-.login-form__gdpr-btn:checked {
+.login-form__gdpr-btn:checked, .login-form__register-btn:checked {
     content: '';
     clip-path: circle(50% at 50% 50%);
     background-color: var(--dark-green);
