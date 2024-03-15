@@ -13,9 +13,14 @@ window.addEventListener(`DOMContentLoaded`, () => {
         initRegistration();
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
+        document.querySelector(`.cart-icon`).addEventListener(`click`, () => {
+            document.querySelector(`.productpage__cart`).classList.toggle(`d-none`);
+        }) 
+        
         populateMenu();
         userOrAdmin();
     }
+
 })
 
 

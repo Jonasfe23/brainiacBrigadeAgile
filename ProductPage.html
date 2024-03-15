@@ -11,17 +11,14 @@
 
 <body class="productpage">
 
-    <div class="productPage__content-wrapper">
-        <section class="productPage__header">
-            <nav class="productPage__nav-menu nav-menu">
-                <img src="./Assets/navicon.svg" alt="Nav icon" class="hamburger-menu">
-                </nav>
-                <nav class="cart-menu">
-                <img src="./Assets/bag.svg" alt="cart icon" class="cart-icon">
-            </nav>
-        </section>
+    <section class="productpage__header">
+        <nav class="nav-menu__header">
+            <img src="./Assets/navicon.svg" alt="Nav icon" class="hamburger-menu__header">
+            <img src="./Assets/bag.svg" alt="cart icon" class="cart-icon">
+        </nav>
+    </section>
 
-    <section class="productpage__cart">
+    <section class="productpage__cart d-none">
         <span class="productpage__arrow-up"></span>
         <h2 class="productpage__cart-title">Din beställning</h2>
         <ul class="productpage__cart-list">
@@ -79,7 +76,7 @@
             <!-- Produkter kommer att läggas till här dynamiskt -->
         </ul>
     </section>
-    
+
 
 
     <div class="edit-menu-button-container">
@@ -87,8 +84,7 @@
     </div>
 
     <footer class="footer"></footer>
-    </div>
-    
+
     <script type="module" src="./scripts/app.js"></script>
 
 
