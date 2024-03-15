@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbeans</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="https://kit.fontawesome.com/f300007e95.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="productpage">
+
+    <section class="productpage__header">
+        <nav class="nav-menu__header">
+            <img src="./Assets/navicon.svg" alt="Nav icon" class="hamburger-menu__header">
+            <img src="./Assets/bag.svg" alt="cart icon" class="cart-icon">
+        </nav>
+    </section>
+
+    <section class="productpage__cart d-none">
+        <span class="productpage__arrow-up"></span>
+        <h2 class="productpage__cart-title">Din beställning</h2>
+        <ul class="productpage__cart-list">
+            <li class="productpage__cart-item">
+                <div class="productpage__cart-item-inner-left">
+                    <h4 class="productpage__cart-item-title">Bryggkaffe</h4>
+                    <p class="productpage__cart-item-price">98 kr</p>
+                </div>
+                <div class="productpage__cart-item-inner-right">
+                    <i class="fa-solid fa-chevron-up"></i>
+                    <span>2</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </li>
+            <li class="productpage__cart-item">
+                <div class="productpage__cart-item-inner-left">
+                    <h4 class="productpage__cart-item-title">Caffé Doppio</h4>
+                    <p class="productpage__cart-item-price">49 kr</p>
+                </div>
+                <div class="productpage__cart-item-inner-right">
+                    <i class="fa-solid fa-chevron-up"></i>
+                    <span>1</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </li>
+            <li class="productpage__cart-item">
+                <div class="productpage__cart-item-inner-left">
+                    <h4 class="productpage__cart-item-title">Cappuccino</h4>
+                    <p class="productpage__cart-item-price">196 kr</p>
+                </div>
+                <div class="productpage__cart-item-inner-right">
+                    <i class="fa-solid fa-chevron-up"></i>
+                    <span>4</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </li>
+        </ul>
+
+        <section class="productpage__price-section">
+            <div class="productpage__price-section-inner-left">
+                <h3 class="productpage__price-section-title">Total</h3>
+                <p class="productpage__price-section-info">inkl. moms + drönarleverans</p>
+            </div>
+            <div class="productpage__price-section-inner-right">
+                <h3 class="productpage__price">343 kr</h3>
+            </div>
+        </section>
+
+        <button class="productpage__cart-button">Take my money!</button>
+    </section>
+
+    <section class="productpage__coffemenu">
+        <h2 class="productpage__coffemenu-title">Meny</h2>
+        <ul class="menu-list" id="menuList">
+            <!-- Produkter kommer att läggas till här dynamiskt -->
+        </ul>
+    </section>
+
+
+
+    <div class="edit-menu-button-container">
+        <button class="edit-menu-btn d-none">Redigera meny</button>
+    </div>
+
+    <footer class="footer"></footer>
+
+    <script type="module" src="./scripts/app.js"></script>
+
+
+
+</body>
+
+</html>
