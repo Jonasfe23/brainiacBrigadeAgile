@@ -1,6 +1,6 @@
 import apiModule from "./apiModule.js";
 import { login, register, userOrAdmin } from "./logInModule.js";
-import { getMenu, getUsers} from "./localStorageModule.js";
+import { getMenu, getUsers, getCart} from "./localStorageModule.js";
 
 window.addEventListener(`DOMContentLoaded`, () => {
     usersToStorage();
@@ -86,7 +86,7 @@ function populateMenu() {
             menuItemButtonRef.classList.add(`menu-list__button`, `menu-list__button--add`);
             menuItemButtonRef.src = '../Assets/add.svg';
             menuItemButtonRef.alt = "Button to add item to cart";
-            menuItemButtonRef.dataset.coffee = coffee.title;
+            menuItemButtonRef.dataset.id = coffee.id;
             menuItemButtonRef.addEventListener(`click`, sendToCart); 
 
             menuItemContainerRef.appendChild(menuItemButtonRef);
@@ -154,16 +154,41 @@ export function editMenuToggle () {
 }
 
 function sendToCart (event) {
-    const itemToBuy = event.currentTarget.dataset.coffee;
-    console.log(`sendToCart: ` + itemToBuy);
+
+    let clickedItem = event.currentTarget.dataset.id;
+    clickedItem = parseInt(clickedItem);
+    
+    let menu = getMenu();
+    let cart = getCart();
+
+    let itemToBuy = menu.find(itemToCart => itemToCart.id === clickedItem);
+
+    let cartItem = {
+        amount: 1,
+        id: itemToBuy.id,
+        price: itemToBuy.price,
+        sum: itemToBuy.price,
+        title: itemToBuy.title
+    };
+
+    if (cart.some(itemInCart => itemInCart.id === itemToBuy.id)) {
+        let existingCartItem = cart.findIndex(itemInCart => itemInCart.id === itemToBuy.id);
+        cart[existingCartItem].amount++;
+        cart[existingCartItem].sum = cart[existingCartItem].price * cart[existingCartItem].amount; 
+    } else {
+        cart.push(cartItem);
+    }
+
+    localStorage.setItem(`cart`, JSON.stringify(cart));
 }
 
 function removeFromMenu(event) {
+
     let menu = getMenu();
+    let itemToRemove = event.currentTarget.dataset.id;
+    itemToRemove = parseInt(itemToRemove);
 
-    const itemToRemove = event.currentTarget.dataset.coffee;
-
-    menu = menu.filter(menuItem => menuItem.title !== itemToRemove);
+    menu = menu.filter(menuItem => menuItem.id !== itemToRemove);
 
     localStorage.setItem(`menu`, JSON.stringify(menu));
     editMenuToggle();
