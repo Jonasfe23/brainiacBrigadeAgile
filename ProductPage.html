@@ -77,35 +77,40 @@
         </ul>
     </section>
 
-    <section class="edit-menu">
+    <section class="edit-menu d-none" id="editMenu">
 
         <button class="edit-menu__button" id="editButton">Redigera meny</button>
 
         <form class="edit-menu__form d-none" id="menuForm">
 
             <h3 class="edit-menu__subtitle">Vad vill du lägga till?</h3>
-            <label class="edit-menu__label edit-menu__label--name" for="editName">Produktnamn<input
-                    class="edit-menu__input-field edit-menu__input-field--name" id="editName" type="text"
-                    name="editName" placeholder="Namn här..." required></label>
 
-            <label class="edit-menu__label edit-menu__label--price" for="editPrice">Produktpris<input
-                    class="edit-menu__input-field edit-menu__input-field--price" id="editPrice" type="number"
-                    name="editPrice" placeholder="Pris här..." required></label>
+            <label class="edit-menu__label edit-menu__label--name" for="editName">
+                Produktnamn
+                <input class="edit-menu__input-field" id="editName" type="text" name="editName" placeholder="Namn här..." required>
+            </label>
 
-            <label class="edit-menu__label edit-menu__label--short" for="shortDesc">Kort produktbeskrivning<input
-                    class="edit-menu__input-field edit-menu__input-field--short" id="shortDesc" type="text"
-                    name="shortDesc" placeholder="Skriv här..."></label>
+            <label class="edit-menu__label edit-menu__label--price" for="editPrice">
+                Produktpris
+                <input class="edit-menu__input-field" id="editPrice" type="number" name="editPrice" placeholder="Pris här..." required>
+            </label>
 
-            <label class="edit-menu__label edit-menu__label--long" for="longDesc">Lång produktbeskrivning<textarea
-                    class="edit-menu__input-field edit-menu__input-field--long" id="longDesc" name="longDesc"
-                    form="menuForm" placeholder="Skriv här..."></textarea></label>
+            <label class="edit-menu__label edit-menu__label--short" for="shortDesc">
+                Kort produktbeskrivning
+                <input class="edit-menu__input-field" id="shortDesc" type="text" name="shortDesc" placeholder="Skriv här...">
+            </label>
 
-            <label class="edit-menu__label edit-menu__label--picture" for="editPic">Produktbild<input
-                    class="edit-menu__input-field edit-menu__input-field--picture" id="editPic" type="url"
-                    name="editPic" placeholder="URL här..."></label>
+            <label class="edit-menu__label edit-menu__label--long" for="longDesc">
+                Lång produktbeskrivning
+                <textarea class="edit-menu__input-field edit-menu__input-field--long" id="longDesc" name="longDesc" form="menuForm" placeholder="Skriv här..."></textarea>
+            </label>
+            
+            <label class="edit-menu__label edit-menu__label--picture" for="editPic">
+                Produktbild
+                <input class="edit-menu__input-field" id="editPic" type="url" name="editPic" placeholder="URL här...">
+            </label>
 
-            <input class="edit-menu__submit-button" id="editSubmit" name="editSubmit" type="submit"
-                value="Lägg till i meny">
+            <input class="edit-menu__submit-button" id="editSubmit" name="editSubmit" type="submit" value="Lägg till i meny">
 
         </form>
 

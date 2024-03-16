@@ -63,12 +63,11 @@ export function userOrAdmin () {
     if (loggedInUser) {
 
         if (loggedInUser.role === `admin`) {
+            const editMenu = document.querySelector(`#editMenu`);
 
-            const editMenuBtn = document.querySelector(`#editButton`);
-
-            if (editMenuBtn) {
-                editMenuBtn.classList.remove(`d-none`);
-                editMenuBtn.addEventListener(`click`, editMenuToggle);
+            if (editMenu) {
+                editMenu.classList.remove(`d-none`);
+                document.querySelector(`#editButton`).addEventListener(`click`, editMenuToggle);
             } 
         }
     }

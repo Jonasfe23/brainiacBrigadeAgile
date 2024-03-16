@@ -16,7 +16,6 @@ window.addEventListener(`DOMContentLoaded`, () => {
         document.querySelector(`.cart-icon`).addEventListener(`click`, () => {
             document.querySelector(`.productpage__cart`).classList.toggle(`d-none`);
         })
-
         populateMenu();
         userOrAdmin();
     }
@@ -216,11 +215,11 @@ function addToMenu(event) {
         let pictureInputRef = document.querySelector(`#editPic`);
 
         if (longDescInputRef.value.length < 1) {
-            longDescInputRef.value = `n/a`
+            longDescInputRef.value = `n/a`;
         }
 
         if (pictureInputRef.value.length < 1) {
-            pictureInputRef.value = `n/a`
+            pictureInputRef.value = `n/a`;
         }
 
         const menu = getMenu();
@@ -237,9 +236,11 @@ function addToMenu(event) {
             image: pictureInputRef.value
         };
 
-        if (menu.some(menuItem => menuItem.title.toLowerCase() === newMenuItem.title.toLowerCase())) {
+        const alreadyOnMenu = menu.some(menuItem => menuItem.title.toLowerCase() === newMenuItem.title.toLowerCase());
 
-            alert(`${newMenuItem.title.toUpperCase()}, finns redan på menyn. Ta bort den gamla först.`)
+        if (alreadyOnMenu) {
+
+            alert(`${newMenuItem.title.toUpperCase()}, finns redan på menyn. Ta bort den gamla först.`);
 
         } else {
 
