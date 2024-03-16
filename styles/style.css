@@ -366,7 +366,7 @@ label {
     margin-bottom: 0; 
 }
 
-/* Lade till min height på .menu-list så sidan behåller form någorlunda när man tar bort items */
+/* Lade till min-height på .menu-list så sidan behåller form någorlunda när man tar bort items */
 
 .menu-list {
     min-height: 66vh;
@@ -432,23 +432,20 @@ label {
     margin-left: 2px;
 }
 
-
-
-
-.edit-menu-button-container {
+.edit-menu {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
-.edit-menu-btn {
+.edit-menu__button,
+.edit-menu__submit-button {
     background-color: #4CAF50; 
     border: none;
     color: white;
     padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
@@ -456,20 +453,82 @@ label {
     border-radius: 4px;
 }
 
-.edit-menu-btn:hover {
+.edit-menu__button:hover,
+.edit-menu__submit-button:hover {
     background-color: #45a049;
 }
 
-.edit-menu-btn:active {
+.edit-menu__button:active {
     background-color: #3e8e41;
 }
 
-.edit-menu-btn--red {
+.edit-menu__button--red {
     background-color: red;
 }
 
-.edit-menu-btn--red:hover {
+.edit-menu__button--red:hover {
     background-color: rgb(216, 9, 9);
+}
+
+.edit-menu__form {
+    margin-top: 2rem;
+    display: grid;
+    max-width: 500px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "subtitle subtitle subtitle"
+        "name name price"
+        "short short short"
+        "long long long"
+        "picture picture picture"
+        ". button .";
+    column-gap: .5rem;
+}
+
+.edit-menu__subtitle {
+    align-self: center;
+    grid-area: subtitle;
+}
+
+.edit-menu__label {
+
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    
+}
+.edit-menu__label--name {
+    grid-area: name;
+}
+
+.edit-menu__label--price {
+    grid-area: price;
+}
+
+.edit-menu__label--short {
+    grid-area: short;
+}
+
+.edit-menu__label--long {
+    grid-area: long;
+}
+
+.edit-menu__label--picture {
+    grid-area: picture;
+}
+
+.edit-menu__input-field {
+    padding: .5rem;
+    width: 100%;
+}
+
+.edit-menu__input-field--long {
+    min-height: 120px;
+}
+
+.edit-menu__submit-button {
+    margin-top: 2rem;
+    grid-area: button;
 }
 
 .d-none {

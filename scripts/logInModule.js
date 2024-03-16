@@ -64,7 +64,7 @@ export function userOrAdmin () {
 
         if (loggedInUser.role === `admin`) {
 
-            const editMenuBtn = document.querySelector(`.edit-menu-btn`);
+            const editMenuBtn = document.querySelector(`#editButton`);
 
             if (editMenuBtn) {
                 editMenuBtn.classList.remove(`d-none`);
