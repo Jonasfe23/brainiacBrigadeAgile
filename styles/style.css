@@ -432,6 +432,7 @@ label {
     margin-left: 2px;
 }
 
+/* Admin-formulär*/
 .edit-menu {
     display: flex;
     flex-direction: column;
