@@ -9,16 +9,15 @@
     <script src="https://kit.fontawesome.com/f300007e95.js" crossorigin="anonymous"></script>
 </head>
 <div class="content-wrapper content-wrapper--pink">
-<body class="">
+<body>
 
     <header class="header">
         <nav class="header__nav-menu">
             <button class="header__hamburger-menu"></button>
             <button class="header__cart-icon" id="cartIcon"></button>
         </nav>
-    </header>            
-            <!-- <img src="./Assets/navicon.svg" alt="Nav icon" class="header__hamburger-menu">
-            <img src="./Assets/bag.svg" alt="cart icon" class="header__cart-icon" id="cartIcon"> -->
+    </header>
+
     <section class="productpage__cart d-none">
         <span class="productpage__arrow-up"></span>
         <h2 class="productpage__cart-title">Din beställning</h2>
@@ -78,11 +77,37 @@
         </ul>
     </section>
 
+    <!-- Admin formulär med knapp -->
+    <section class="edit-menu d-none" id="editMenu">
 
+        <button class="edit-menu__button" id="editButton">Redigera meny</button>
 
-    <div class="edit-menu-button-container">
-        <button class="edit-menu-btn d-none">Redigera meny</button>
-    </div>
+        <form class="edit-menu__form d-none" id="menuForm">
+            <h3 class="edit-menu__subtitle">Vad vill du lägga till?</h3>
+            <label class="edit-menu__label edit-menu__label--name" for="editName">
+                Produktnamn
+                <input class="edit-menu__input-field" id="editName" type="text" name="editName" placeholder="Namn här..." required>
+            </label>
+            <label class="edit-menu__label edit-menu__label--price" for="editPrice">
+                Produktpris
+                <input class="edit-menu__input-field" id="editPrice" type="number" name="editPrice" placeholder="Pris här..." required>
+            </label>
+            <label class="edit-menu__label edit-menu__label--short" for="shortDesc">
+                Kort produktbeskrivning
+                <input class="edit-menu__input-field" id="shortDesc" type="text" name="shortDesc" placeholder="Skriv här...">
+            </label>
+            <label class="edit-menu__label edit-menu__label--long" for="longDesc">
+                Lång produktbeskrivning
+                <textarea class="edit-menu__input-field edit-menu__input-field--long" id="longDesc" name="longDesc" form="menuForm" placeholder="Skriv här..."></textarea>
+            </label>
+            <label class="edit-menu__label edit-menu__label--picture" for="editPic">
+                Produktbild
+                <input class="edit-menu__input-field" id="editPic" type="url" name="editPic" placeholder="URL här...">
+            </label>
+            <input class="edit-menu__submit-button" id="editSubmit" name="editSubmit" type="submit" value="Lägg till i meny">
+        </form>
+
+    </section>
 
     <footer class="footer footer--image"></footer>
 </div>
