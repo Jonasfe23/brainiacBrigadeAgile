@@ -4,8 +4,8 @@ import { getUsers, saveUser} from './localStorageModule.js';
 
 export function login(username, password) {
     try {
-        const users = getUsers();
-
+        const users = getUsers(); 
+        
         const user = users.find(user => user.username === username && user.password === password);
 
         if (user) {
