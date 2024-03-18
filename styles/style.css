@@ -351,6 +351,7 @@ body {
 }
 
 .menu-list {
+    min-height: 66vh;
     padding: 0;
     margin: 10px;
     list-style: none;
@@ -362,16 +363,25 @@ body {
     margin-bottom: 20px;
 }
 
-.menu-list__add-button {
+
+.menu-list__button {
     width: 28px;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    background-color: #2F2926;
     margin-right: 10px;
     flex-shrink: 0;
     padding: 6px;
     margin: 8px;
     cursor: pointer;
+}
+
+.menu-list__button--add {
+    background-color: #2F2926;
+}
+
+.menu-list__button--remove {
+    background-color: #FF0000;
+
 }
 
 .menu-list__info-wrapper{
@@ -405,19 +415,24 @@ body {
     margin-left: 2px;
 }
 
-.edit-menu-button-container {
+
+/* Admin-formulär*/
+.edit-menu {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
-.edit-menu-btn {
+.edit-menu__button,
+.edit-menu__submit-button {
+    background-color: #4CAF50; 
     background-color: var(--airbean-dark-green); 
     border: none;
     color: white;
     padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
@@ -425,12 +440,83 @@ body {
     border-radius: 4px;
 }
 
-.edit-menu-btn:hover {
+.edit-menu__button:hover,
+.edit-menu__submit-button:hover {
+    background-color: #45a049;
+}
+
+.edit-menu__button:active {
+
     background-color: var(--airbean-green);
 }
 
-.edit-menu-btn:active {
-    background-color: #3e8e41;
+.edit-menu__button--red {
+    background-color: red;
+}
+
+.edit-menu__button--red:hover {
+    background-color: rgb(216, 9, 9);
+}
+
+.edit-menu__form {
+    margin-top: 2rem;
+    display: grid;
+    max-width: 500px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "subtitle subtitle subtitle"
+        "name name price"
+        "short short short"
+        "long long long"
+        "picture picture picture"
+        ". button .";
+    column-gap: .5rem;
+}
+
+.edit-menu__subtitle {
+    align-self: center;
+    grid-area: subtitle;
+}
+
+.edit-menu__label {
+    margin: .5rem 0;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    
+}
+.edit-menu__label--name {
+    grid-area: name;
+}
+
+.edit-menu__label--price {
+    grid-area: price;
+}
+
+.edit-menu__label--short {
+    grid-area: short;
+}
+
+.edit-menu__label--long {
+    grid-area: long;
+}
+
+.edit-menu__label--picture {
+    grid-area: picture;
+}
+
+.edit-menu__input-field {
+    padding: .5rem;
+    width: 100%;
+}
+
+.edit-menu__input-field--long {
+    min-height: 120px;
+}
+
+.edit-menu__submit-button {
+    margin-top: 2rem;
+    grid-area: button;
 }
 
 .d-none {
