@@ -624,3 +624,84 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.60);
     margin-bottom: 5rem;
 }
+
+/* status page */
+
+.status-page__body{
+    margin: 0 auto;
+    padding: 0;
+    max-width: 375px;
+    background-color: rgb(207, 108, 80);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.status-page__ordernumber-drone{
+ margin: 3.5rem;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ 
+ 
+
+}
+
+.status-page__ordernumber{
+    margin-bottom: 4rem;
+}
+.status-page__drone{
+    margin: 1rem;
+    
+    
+}
+
+.status-page__title-delivery{
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 340px;
+   
+}
+
+.status-page__title{
+    font-size: 2.3rem;
+    padding: 1rem;
+    text-align: center;
+   
+
+}
+
+.status-page__delivery-time{
+    font-size: 1.5rem;
+    padding: 2rem;
+
+}
+
+.status-page__button{
+    background-color: white; 
+    color: rgb(0, 0, 0);
+    padding: 12px 40px;
+    text-align: center;
+    display: inline-block;
+    font-size: 27px;
+    margin: 20px 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    border: none;
+    font-weight: 550;
+    margin-bottom: 5rem;
+    
+}
+
+.status-page__button:hover{
+    background-color: rgb(225, 225, 250);
+
+}
+
