@@ -24,6 +24,19 @@ export function getUsers() {
     }
 }
 
+export function getCart() {
+
+    try {
+        const cartString = localStorage.getItem(`cart`) || JSON.stringify([]);
+        const cart = JSON.parse(cartString);
+        return cart;
+
+    } catch (error) {
+        console.log(`Something went wrong at getCart` + error);
+        return [];
+    }
+}
+
 export function saveUser(user) {
     try {
         

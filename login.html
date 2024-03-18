@@ -9,26 +9,27 @@
 </head>
 
 <body>
-    <div class="content-wrapper">
-        <section class="header">
-            <nav class="nav-menu">
-                <img src="./Assets/navicon.svg" alt="Nav icon" class="hamburger-menu">
+    <div class="content-wrapper content-wrapper--brown">
+        <header class="header">
+            <nav class="header__nav-menu">
+                <button class="header__hamburger-menu"></button>
             </nav>
-        </section>
+        </header> 
+
         <section class="login-form" id="loginForm">
 
             <section class="login-form__inner">
                 <img src="./Assets/logo-sml.svg" alt="Small logo" class="login-form__small-logo">
                 <h2 class="login-form__welcome">Välkommen till Airbean-familjen!</h2>
                 <h3 class="login-form__additional-text">Genom att skapa ett konto nedan kan du se och spara din orderhistorik</h3>
-                <form>
-                    <label for="username">Användarnamn:</label>
+                <form class="login-form__form">
+                    <label class="login-form__label" for="username">Användarnamn:</label>
                     <input class="login-form__text-field" type="login-form__text" name="username" required>
 
-                    <label for="password">Lösenord:</label>
+                    <label class="login-form__label" for="password">Lösenord:</label>
                     <input class="login-form__text-field" type="password" name="password" required>
 
-                    <label>
+                    <label class="login-form__label">
                         <input class="login-form__gdpr-btn" type="checkbox" name="gdpr"> GDPR ok!
                     </label>
 
@@ -38,6 +39,7 @@
                 </form>
             </section>
         </section>
+        <footer class="footer footer--brown"></footer>
     </div>
 
     <script type="module" src="./scripts/app.js"></script>
