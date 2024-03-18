@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="./styles/style.css">
     <script src="https://kit.fontawesome.com/f300007e95.js" crossorigin="anonymous"></script>
 </head>
+<div class="content-wrapper content-wrapper--pink">
+<body>
 
-<body class="productpage">
-
-    <section class="productpage__header">
-        <nav class="nav-menu__header">
-            <img src="./Assets/navicon.svg" alt="Nav icon" class="hamburger-menu__header">
-            <img src="./Assets/bag.svg" alt="cart icon" class="cart-icon">
+    <header class="header">
+        <nav class="header__nav-menu">
+            <button class="header__hamburger-menu"></button>
+            <button class="header__cart-icon" id="cartIcon"></button>
         </nav>
-    </section>
+    </header>
 
     <section class="productpage__cart d-none">
         <span class="productpage__arrow-up"></span>
@@ -71,7 +71,7 @@
     </section>
 
     <section class="productpage__coffemenu">
-        <h2 class="productpage__coffemenu-title">Meny</h2>
+        <h1 class="productpage__coffemenu-title">Meny</h1>
         <ul class="menu-list" id="menuList">
             <!-- Produkter kommer att läggas till här dynamiskt -->
         </ul>
@@ -109,12 +109,10 @@
 
     </section>
 
-    <footer class="footer"></footer>
+    <footer class="footer footer--image"></footer>
+</div>
 
     <script type="module" src="./scripts/app.js"></script>
-
-
-
 </body>
 
 </html>
