@@ -21,6 +21,9 @@ window.addEventListener(`DOMContentLoaded`, () => {
         userOrAdmin();
         addCloseButton(); 
     }
+    if (document.location.pathname.endsWith("profile.html")) {
+        addCloseButton(); 
+    }
     
 })
 
@@ -445,19 +448,10 @@ function createOrder() {
 
 }
 
-
-
-
-
-
-
-
-
 function addCloseButton() {
     const openMenuBtn = document.getElementById('openMenuBtn');
     const menu = document.querySelector('.header__menu');
 
-    // Skapa stängningsknappen om den inte redan existerar
     let closeMenuBtn = document.getElementById('closeMenuBtn');
     if (!closeMenuBtn) {
         closeMenuBtn = document.createElement('button');
@@ -465,16 +459,14 @@ function addCloseButton() {
         closeMenuBtn.id = 'closeMenuBtn';
         menu.appendChild(closeMenuBtn);
 
-        // Hantera klick på stängningsknappen
         closeMenuBtn.addEventListener('click', () => {
             menu.style.display = 'none';
             openMenuBtn.style.display = 'block';
         });
     }
 
-    // Lägg till logik för att öppna menyn när användaren klickar på öppningsknappen
     openMenuBtn.addEventListener('click', () => {
         menu.style.display = 'block';
-        openMenuBtn.style.display = 'none'; // Dölj öppningsknappen när menyn är synlig
+        openMenuBtn.style.display = 'none';
     });
 }
