@@ -14,60 +14,31 @@
     <header class="header">
         <nav class="header__nav-menu">
             <button class="header__hamburger-menu"></button>
-            <button class="header__cart-icon" id="cartIcon"></button>
+            <div class="header__cart-wrapper">
+                <p class="header__cart-item-counter" id="itemsInCart"></p>
+                <button class="header__cart-icon" id="cartIcon"></button>
+            </div> 
         </nav>
     </header>
 
-    <section class="productpage__cart d-none">
-        <span class="productpage__arrow-up"></span>
-        <h2 class="productpage__cart-title">Din beställning</h2>
-        <ul class="productpage__cart-list">
-            <li class="productpage__cart-item">
-                <div class="productpage__cart-item-inner-left">
-                    <h4 class="productpage__cart-item-title">Bryggkaffe</h4>
-                    <p class="productpage__cart-item-price">98 kr</p>
-                </div>
-                <div class="productpage__cart-item-inner-right">
-                    <i class="fa-solid fa-chevron-up"></i>
-                    <span>2</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-            </li>
-            <li class="productpage__cart-item">
-                <div class="productpage__cart-item-inner-left">
-                    <h4 class="productpage__cart-item-title">Caffé Doppio</h4>
-                    <p class="productpage__cart-item-price">49 kr</p>
-                </div>
-                <div class="productpage__cart-item-inner-right">
-                    <i class="fa-solid fa-chevron-up"></i>
-                    <span>1</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-            </li>
-            <li class="productpage__cart-item">
-                <div class="productpage__cart-item-inner-left">
-                    <h4 class="productpage__cart-item-title">Cappuccino</h4>
-                    <p class="productpage__cart-item-price">196 kr</p>
-                </div>
-                <div class="productpage__cart-item-inner-right">
-                    <i class="fa-solid fa-chevron-up"></i>
-                    <span>4</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-            </li>
+    <section class="cart d-none" id="cart">
+        <span class="cart__arrow-up"></span>
+        <h2 class="cart__title">Din beställning</h2>
+        <ul class="cart__list" id="cartList">
+            <!-- Produkter kommer att läggas till här dynamiskt -->
         </ul>
 
-        <section class="productpage__price-section">
-            <div class="productpage__price-section-inner-left">
-                <h3 class="productpage__price-section-title">Total</h3>
-                <p class="productpage__price-section-info">inkl. moms + drönarleverans</p>
+        <section class="cart__price-section">
+            <div class="cart__price-section-inner-left">
+                <h3 class="cart__price-section-title">Total</h3>
+                <p class="cart__price-section-info">inkl. moms + drönarleverans</p>
             </div>
-            <div class="productpage__price-section-inner-right">
-                <h3 class="productpage__price">343 kr</h3>
+            <div class="cart__price-section-inner-right">
+                <h3 class="cart__price" id="cartPrice"></h3>
             </div>
         </section>
 
-        <button class="productpage__cart-button">Take my money!</button>
+        <button class="cart__button" id="orderButton">Take my money!</button>
     </section>
 
     <section class="productpage__coffemenu">
