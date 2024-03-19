@@ -24,29 +24,15 @@
             </section>
         </section>
         
-        <section class="orderhistory">
+        <section class="orderhistory" id="orderHistory">
             <h2 class="orderhistory__title">Orderhistorik:</h2>
-            <section class="orderhistory__first--order">
-                <h4 class="orderhistory__ordernumber">#123456</h4>
-                <p class="orderhistory__date">18-03/24</p>
-                <p class="orderhistory__tot--amount">Totalsumma:</p>
-                <p class="orderhistory__price">443 kr</p>
-            </section>
-            <section class="orderhistory__second--order">
-                <h4 class="orderhistory__ordernumber">#123456</h4>
-                <p class="orderhistory__date">18-03/24</p>
-                <p class="orderhistory__tot--amount">Totalsumma:</p>
-                <p class="orderhistory__price">443 kr</p>
-            </section>
-            <section class="orderhistory__third--order">
-                <h4 class="orderhistory__ordernumber">#123456</h4>
-                <p class="orderhistory__date">18-03/24</p>
-                <p class="orderhistory__tot--amount">Totalsumma:</p>
-                <p class="orderhistory__price">443 kr</p>
-            </section>
+            <ul class="orderhistory__list-wrapper" id="orderHistoryList">
+                <!-- List-items kommer att läggas till här dynamiskt -->
+            </ul>
+
             <section class="orderhistory__total">
-            <h3 class="orderhistory__spent--total">Spenderat totalt:</h3>
-            <p class="orderhistory__tot--sek">1329 kr</p>
+            <h3 class="orderhistory__spent-total">Totalt spenderat:</h3>
+            <p class="orderhistory__tot-sek" id="totalSpent"></p>
             </section>
         </section>
 
