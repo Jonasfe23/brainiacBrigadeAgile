@@ -18,6 +18,9 @@ window.addEventListener(`DOMContentLoaded`, () => {
         renderCart();
         userOrAdmin();
     }
+    if (document.location.pathname.endsWith("profile.html")) {
+        renderOrderHistory();
+    }
 
 })
 
@@ -392,6 +395,7 @@ function renderCart() {
             itemsInCartRef.classList.add(`d-none`);
             cartButtonRef.removeEventListener(`click`, showCart);
             cartButtonRef.classList.remove(`header__cart-icon--clickable`);
+            localStorage.removeItem(`cart`);
         } else {
             itemsInCartRef.classList.remove(`d-none`);
             cartButtonRef.addEventListener(`click`, showCart);
@@ -418,11 +422,22 @@ function createOrder() {
         const cart = getCart();
         const orders = getOrders();
         const orderNumber = orders.length + 1;
+
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Padstart så att om det är färre än 2 siffror så läggs 0 framför. 01 ist för 1 alltså. +1 pga att javaScript räknar månader från 0...
+        const day = String(today.getDate()).padStart(2, '0');
+
+
+        const date = `${year}/${month}/${day}`
+
+        console.log(date);
     
         const loggedInUser = JSON.parse(localStorage.getItem(`loggedInUser`));
     
         const newOrder = {
             ordernumber: orderNumber,
+            date: date,
             customer: loggedInUser.username,
             order: cart
         }
@@ -440,6 +455,59 @@ function createOrder() {
         console.log(`Something went wrong at createOrder: ` + error);
     }
 
+}
+
+function renderOrderHistory() {
+
+    const orders = getOrders();
+    const loggedInUser = JSON.parse(localStorage.getItem(`loggedInUser`));
+
+    const orderHistory = orders.filter(order => order.customer === loggedInUser.username);
+
+    const listWrapperRef = document.querySelector(`#orderHistoryList`);
+
+    const totalSpentRef = document.querySelector(`#totalSpent`);
+
+    orderHistory.forEach(order => {
+
+        const listItemRef = document.createElement(`li`);
+        listItemRef.classList.add(`orderhistory__list-item`);
+
+        const orderNumberRef = document.createElement(`h4`);
+        orderNumberRef.classList.add(`orderhistory__ordernumber`);
+        orderNumberRef.textContent = `#${order.ordernumber}`;
+
+        const orderDateRef = document.createElement(`p`);
+        orderDateRef.classList.add(`orderhistory__date`);
+        orderDateRef.textContent = order.date;
+
+        const orderTotalRef = document.createElement(`p`);
+        orderTotalRef.classList.add(`orderhistory__tot-amount`);
+        orderTotalRef.textContent = `Totalsumma:`;
+
+        const orderPriceRef = document.createElement(`p`);
+        orderPriceRef.classList.add(`orderhistory__price`);
+
+        let priceOfOrder = 0;
+        let totalSpent = 0;       
+        
+        order.order.forEach(itemOnOrder => {
+            priceOfOrder += itemOnOrder.sum;
+            totalSpent += priceOfOrder;
+        });
+
+        orderPriceRef.textContent = `${priceOfOrder} kr`;
+        totalSpentRef.textContent = `${totalSpent} kr`
+
+        listItemRef.appendChild(orderNumberRef);
+        listItemRef.appendChild(orderDateRef);
+        listItemRef.appendChild(orderDateRef);
+        listItemRef.appendChild(orderTotalRef);
+        listItemRef.appendChild(orderPriceRef);
+
+        listWrapperRef.appendChild(listItemRef);
+
+    });
 }
 
 
