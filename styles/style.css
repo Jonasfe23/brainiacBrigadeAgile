@@ -652,34 +652,17 @@ body {
 
 .orderhistory__title {
     color: var(--airbean-pink);
-    margin-bottom: 1rem;
+    font-family: var(--font-family-heading-text);
+    margin-bottom: .5rem;
 }
 
-.orderhistory__first--order {
+.orderhistory__list-item {
     color: var(--airbean-pink);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border-bottom: 1px solid rgba(255, 255, 255, 0.196);
-    gap: .2rem;
-    padding: 0.2rem 0rem 0.2rem 0rem;
-}
-
-.orderhistory__second--order {
-    color: var(--airbean-pink);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.196);
-    gap: .2rem;
-    padding: 0.2rem 0rem 0.2rem 0rem;
-}
-
-.orderhistory__third--order {
-    color: var(--airbean-pink);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.196);
-    gap: .2rem;
-    padding: 0.2rem 0rem 0.2rem 0rem;
+    row-gap: .6rem;
+    padding: .8rem 0;
 }
 
 .orderhistory__date {
@@ -695,12 +678,12 @@ body {
 .orderhistory__total {
     color: var(--airbean-pink);
     font-family: var(--font-family-default);
-    font-weight: 700;
+    font-weight: 600;
     display: flex;
     justify-content: space-between;
     padding-top: .2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.60);
-    margin-bottom: 5rem;
+    padding: 1rem 0 5rem 0;
 }
 
 /* status page */
@@ -714,8 +697,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center; 
 }
 
 .status-page__ordernumber-drone{
@@ -724,18 +706,13 @@ body {
  justify-content: center;
  align-items: center;
  flex-direction: column;
- 
- 
-
 }
 
 .status-page__ordernumber{
     margin-bottom: 4rem;
 }
 .status-page__drone{
-    margin: 1rem;
-    
-    
+    margin: 1rem;  
 }
 
 .status-page__title-delivery{
