@@ -1,6 +1,6 @@
 import apiModule from "./apiModule.js";
 import { login, register, userOrAdmin } from "./logInModule.js";
-import { getMenu, getUsers, getCart } from "./localStorageModule.js";
+import { getMenu, getUsers, getCart, getOrders } from "./localStorageModule.js";
 
 window.addEventListener(`DOMContentLoaded`, () => {
     usersToStorage();
@@ -13,10 +13,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
         initRegistration();
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
-        document.querySelector(`#cartIcon`).addEventListener(`click`, () => {
-            document.querySelector(`#cart`).classList.toggle(`d-none`);
-        })
-
+        document.querySelector(`#orderButton`).addEventListener(`click`, createOrder);
         populateMenu();
         renderCart();
         userOrAdmin();
@@ -389,11 +386,16 @@ function renderCart() {
         });
 
         const itemsInCartRef = document.querySelector(`#itemsInCart`);
+        const cartButtonRef = document.querySelector(`#cartIcon`);
 
         if (cart.length === 0) {
             itemsInCartRef.classList.add(`d-none`);
+            cartButtonRef.removeEventListener(`click`, showCart);
+            cartButtonRef.classList.remove(`header__cart-icon--clickable`);
         } else {
             itemsInCartRef.classList.remove(`d-none`);
+            cartButtonRef.addEventListener(`click`, showCart);
+            cartButtonRef.classList.add(`header__cart-icon--clickable`);
         }
 
         itemsInCartRef.textContent = itemsInCart;
@@ -406,7 +408,39 @@ function renderCart() {
 
 }
 
+function showCart() {
+    document.querySelector(`#cart`).classList.toggle(`d-none`);
+}
 
+function createOrder() {
+
+    try {
+        const cart = getCart();
+        const orders = getOrders();
+        const orderNumber = orders.length + 1;
+    
+        const loggedInUser = JSON.parse(localStorage.getItem(`loggedInUser`));
+    
+        const newOrder = {
+            ordernumber: orderNumber,
+            customer: loggedInUser.username,
+            order: cart
+        }
+    
+        orders.push(newOrder);
+    
+        localStorage.setItem(`orders`, JSON.stringify(orders));
+        localStorage.removeItem(`cart`);
+
+        renderCart();
+
+        document.querySelector(`#cart`).classList.add(`d-none`);
+
+    } catch (error) {
+        console.log(`Something went wrong at createOrder: ` + error);
+    }
+
+}
 
 
 

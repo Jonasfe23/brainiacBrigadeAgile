@@ -48,3 +48,15 @@ export function saveUser(user) {
         console.error('Something went wrong at localStorage:' + error);
     }
 }
+
+export function getOrders() {
+    try {
+        const ordersString = localStorage.getItem(`orders`) || JSON.stringify([]);
+        const orders = JSON.parse(ordersString);
+        return orders;
+
+    } catch (error) {
+        console.log(`Something went wrong at getOrders` + error);
+        return [];
+    }
+}
