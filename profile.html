@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="content-wrapper content-wrapper--brown">
+        <header class="header">
+            <nav class="header__nav-menu">
+                <button class="header__hamburger-menu"></button>
+            </nav>
+        </header> 
+
+        <section class="profile">
+            <section class="profile__inner">
+                <figure class="profile__img-container">
+                <img src="./Assets/profile.svg" alt="profile image" class="profile__img">
+                </figure>
+                <h1 class="profile__name">Sixten Kaffelöver</h1>
+                <h3 class="profile__email">sixten.kaffelover@zocom.com</h3>
+            </section>
+        </section>
+        
+        <section class="orderhistory">
+            <h2 class="orderhistory__title">Orderhistorik:</h2>
+            <section class="orderhistory__first--order">
+                <h4 class="orderhistory__ordernumber">#123456</h4>
+                <p class="orderhistory__date">18-03/24</p>
+                <p class="orderhistory__tot--amount">Totalsumma:</p>
+                <p class="orderhistory__price">443 kr</p>
+            </section>
+            <section class="orderhistory__second--order">
+                <h4 class="orderhistory__ordernumber">#123456</h4>
+                <p class="orderhistory__date">18-03/24</p>
+                <p class="orderhistory__tot--amount">Totalsumma:</p>
+                <p class="orderhistory__price">443 kr</p>
+            </section>
+            <section class="orderhistory__third--order">
+                <h4 class="orderhistory__ordernumber">#123456</h4>
+                <p class="orderhistory__date">18-03/24</p>
+                <p class="orderhistory__tot--amount">Totalsumma:</p>
+                <p class="orderhistory__price">443 kr</p>
+            </section>
+            <section class="orderhistory__total">
+            <h3 class="orderhistory__spent--total">Spenderat totalt:</h3>
+            <p class="orderhistory__tot--sek">1329 kr</p>
+            </section>
+        </section>
+
+        <footer class="footer footer--brown"></footer>
+    </div>
+
+    <script type="module" src="./scripts/app.js"></script>
+</body>
+</html>

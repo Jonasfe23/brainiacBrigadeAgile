@@ -1,6 +1,6 @@
 import apiModule from "./apiModule.js";
 import { login, register, userOrAdmin } from "./logInModule.js";
-import { getMenu, getUsers, getCart } from "./localStorageModule.js";
+import { getMenu, getUsers, getCart, getOrders } from "./localStorageModule.js";
 
 window.addEventListener(`DOMContentLoaded`, () => {
     usersToStorage();
@@ -15,11 +15,9 @@ window.addEventListener(`DOMContentLoaded`, () => {
         addCloseButton(); 
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
-        document.querySelector(`#cartIcon`).addEventListener(`click`, () => {
-            document.querySelector(`.productpage__cart`).classList.toggle(`d-none`);
-        }) 
-        
+        document.querySelector(`#orderButton`).addEventListener(`click`, createOrder);
         populateMenu();
+        renderCart();
         userOrAdmin();
         addCloseButton(); 
     }
@@ -153,9 +151,37 @@ function sendToCart(event) {
         }
 
         localStorage.setItem(`cart`, JSON.stringify(cart));
+        renderCart();
 
     } catch (error) {
         console.log(`Something went wrong at sendToCart:` + error);
+    }
+}
+
+function removeFromCart(event) {
+
+    let clickedItem = event.currentTarget.dataset.id;
+    clickedItem = parseInt(clickedItem);
+
+    const cart = getCart();
+
+    const existingCartItem = cart.findIndex(itemInCart => itemInCart.id === clickedItem);
+
+    if (existingCartItem !== -1) {
+    cart[existingCartItem].amount--
+    cart[existingCartItem].sum = cart[existingCartItem].price * cart[existingCartItem].amount;
+   
+        if (cart[existingCartItem].amount === 0) {
+            cart.splice(existingCartItem, 1);
+            
+            if(cart.length < 1) {
+                document.querySelector(`#cart`).classList.add(`d-none`)
+            }
+        }
+
+        localStorage.setItem(`cart`, JSON.stringify(cart));
+        renderCart();
+        
     }
 }
 
@@ -305,6 +331,127 @@ function initRegistration() {
         register(regUsername, regPassword);
     });
 }
+
+function renderCart() {
+
+    try {
+        const cartListRef = document.querySelector(`#cartList`);
+
+        cartListRef.innerHTML = ``;
+
+        let cartPrice = 0;
+        let itemsInCart = 0;
+
+        const cart = getCart();
+
+
+        cart.forEach(menuItem => {
+
+            const cartListItemRef = document.createElement(`li`);
+            cartListItemRef.classList.add(`cart__item`);
+
+            const cartWrapperLeftRef = document.createElement(`div`);
+            cartWrapperLeftRef.classList.add(`cart__item-inner-left`);
+            cartListItemRef.appendChild(cartWrapperLeftRef);
+
+            const cartItemTitleRef = document.createElement(`h4`);
+            cartItemTitleRef.textContent = menuItem.title;
+            cartWrapperLeftRef.appendChild(cartItemTitleRef);
+
+            const cartItemPriceRef = document.createElement(`p`);
+            cartItemPriceRef.classList.add(`cart__item-price`);
+            cartItemPriceRef.textContent = `${menuItem.sum} kr`;
+            cartPrice += menuItem.sum;
+            cartWrapperLeftRef.appendChild(cartItemPriceRef);
+
+            const cartWrapperRightRef = document.createElement(`div`);
+            cartWrapperRightRef.classList.add(`cart__item-inner-right`);
+            cartListItemRef.appendChild(cartWrapperRightRef);
+
+            const upIconRef = document.createElement(`i`);
+            upIconRef.classList.add(`fa-solid`, `fa-chevron-up`);
+            upIconRef.dataset.id = menuItem.id;
+            upIconRef.addEventListener(`click`, sendToCart);
+            cartWrapperRightRef.appendChild(upIconRef);
+
+            const menuItemAmountRef = document.createElement(`span`);
+            menuItemAmountRef.textContent = menuItem.amount;
+            itemsInCart += menuItem.amount;
+            cartWrapperRightRef.appendChild(menuItemAmountRef);
+
+            const downIconRef = document.createElement(`i`);
+            downIconRef.classList.add(`fa-solid`, `fa-chevron-down`);
+            downIconRef.dataset.id = menuItem.id;
+            downIconRef.addEventListener(`click`, removeFromCart);
+            cartWrapperRightRef.appendChild(downIconRef);
+
+            cartListRef.appendChild(cartListItemRef);
+        });
+
+        const itemsInCartRef = document.querySelector(`#itemsInCart`);
+        const cartButtonRef = document.querySelector(`#cartIcon`);
+
+        if (cart.length === 0) {
+            itemsInCartRef.classList.add(`d-none`);
+            cartButtonRef.removeEventListener(`click`, showCart);
+            cartButtonRef.classList.remove(`header__cart-icon--clickable`);
+        } else {
+            itemsInCartRef.classList.remove(`d-none`);
+            cartButtonRef.addEventListener(`click`, showCart);
+            cartButtonRef.classList.add(`header__cart-icon--clickable`);
+        }
+
+        itemsInCartRef.textContent = itemsInCart;
+        document.querySelector(`#cartPrice`).textContent = `${cartPrice} kr`;
+        
+    } catch (error) {
+
+        console.log(`Something went wrong at renderCart: ` + error);
+    }
+
+}
+
+function showCart() {
+    document.querySelector(`#cart`).classList.toggle(`d-none`);
+}
+
+function createOrder() {
+
+    try {
+        const cart = getCart();
+        const orders = getOrders();
+        const orderNumber = orders.length + 1;
+    
+        const loggedInUser = JSON.parse(localStorage.getItem(`loggedInUser`));
+    
+        const newOrder = {
+            ordernumber: orderNumber,
+            customer: loggedInUser.username,
+            order: cart
+        }
+    
+        orders.push(newOrder);
+    
+        localStorage.setItem(`orders`, JSON.stringify(orders));
+        localStorage.removeItem(`cart`);
+
+        renderCart();
+
+        document.querySelector(`#cart`).classList.add(`d-none`);
+
+    } catch (error) {
+        console.log(`Something went wrong at createOrder: ` + error);
+    }
+
+}
+
+
+
+
+
+
+
+
 
 function addCloseButton() {
     const openMenuBtn = document.getElementById('openMenuBtn');
