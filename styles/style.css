@@ -705,3 +705,124 @@ body {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 375px) {
+    body { min-width: 375px ;
+        
+    }
+}
+
+@media screen and (min-width: 500px) {
+    body {min-width: 500px;
+    }
+    .login-form{justify-content: center;}
+    .productpage__cart{min-width: 450px;}
+    .productpage__price-section{justify-content: space-around;}
+}
+
+@media screen and (min-width: 650px) {
+    body {min-width: 650px;
+    }
+    .menu-list{margin: 20px;}
+    .productpage__coffemenu-title{font-size: 2.5rem;}
+    .productpage__cart{min-width: 600px;}
+
+    .orderhistory__title{font-size: 1.6rem;}
+    .orderhistory__date{font-size: 1.1rem;}
+    .orderhistory__price{font-size: 1.1rem;}
+    .orderhistory__total{font-size: 1.1rem;}
+    .orderhistory__ordernumber{font-size: 1.1rem;}
+    .orderhistory__tot--amuont{font-size: 1.1rem;}
+    .orderhistory__spent--total{font-size: 1.5rem;}
+    .orderhistory__tot--sek{font-size: 1.5rem;}
+}
+
+@media screen and (min-width: 800px) {
+    body {min-width: 800px;
+    }
+    .menu-list{margin: 40px;}
+    .productpage__coffemenu-title{font-size: 3rem;}
+    
+    .login-form__welcome{font-size: 2.5rem;}
+    .login-form__additional-text{font-size: 1.2rem;}
+    .login-form__label{font-size: 1.4rem;}
+    .login-form__register{font-size: 1.2rem;}
+
+    .productpage__cart{min-width: 750px;}
+    .productpage__cart-item{min-width: 500px;}
+    .productpage__cart-item-title {font-size: 1.6rem;}
+    .productpage__cart-item-price {font-size: 1rem;}
+    .productpage__price-section-title, .productpage__price{font-size: 2rem;}
+    .productpage__price-section{justify-content: space-evenly;}
+
+    .profile__img{min-height: 120px;}
+    .profile__name{font-size: 1.3rem;}
+    .profile__email{font-size: 1rem;}
+    .orderhistory{margin-left: 4rem; margin-right: 4rem;}
+    .orderhistory__title{font-size: 1.8rem;}
+    .orderhistory__date{font-size: 1.3rem;}
+    .orderhistory__price{font-size: 1.3rem;}
+    .orderhistory__total{font-size: 1.3rem;}
+    .orderhistory__ordernumber{font-size: 1.3rem;}
+    .orderhistory__tot--amuont{font-size: 1.3rem;}
+    .orderhistory__spent--total{font-size: 1.8rem;}
+    .orderhistory__tot--sek{font-size: 1.8rem;}
+}
+
+@media screen and (min-width: 1000px) {
+    body {min-width: 1000px;
+    }
+    .menu-list{
+       margin-left: 100px;
+       margin-right: 100px;}
+    .menu-list__coffe-title{font-size: 1.8rem; }
+    .menu-list__price{font-size: 1.8rem;}
+    .menu-list__about-coffee{font-size: 1rem;}
+    
+    .login-form__welcome{font-size: 2.8rem;}
+    .login-form__additional-text{font-size: 1.4rem;
+    max-width: 700px;}
+
+    .productpage__cart{min-width: 950px;}
+    .productpage__cart-item{min-width: 700px;}
+    .productpage__cart-item-title {font-size: 2rem;}
+    .productpage__cart-item-price {font-size: 1.4rem;}
+    .productpage__price-section-title, .productpage__price{font-size: 2.4rem;}
+    .productpage__price-section-info{font-size: 1rem;}
+   
+
+    .profile__img{min-height: 140px;}
+    .profile__name{font-size: 1.5rem;}
+    .profile__email{font-size: 1.3rem;}
+}
+
+@media screen and (min-width: 1200px) {
+    body {min-width: 1200px;
+    }
+    .productpage__cart{min-width: 1150px;}
+
+    .orderhistory{margin-left: 10rem; margin-right: 10rem;}
+}
+
+@media screen and (min-width: 1400px) {
+    body {min-width: 1400px;
+    }
+    .menu-list{
+        margin-left: 165px;
+        margin-right: 165px;}
+        .productpage__cart{min-width: 1350px;}
+
+        .orderhistory{margin-left: 18rem; margin-right: 18rem;}
+}
