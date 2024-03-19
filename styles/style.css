@@ -7,6 +7,7 @@
     --airbean-dark-green: #38846D;
     --airbean-brown: #2F2926;
     --airbean-orange: #E5674E;
+    --airbean-black: #000;
     /* Fonts */
     --font-family-heading-text: "PT Serif", serif;
     --font-family-default: "Work Sans", sans-serif;
@@ -51,7 +52,7 @@ body {
 
 .header__nav-menu {
     display: flex;
-    justify-content: space-between;
+    position: relative;
     width: 100%;
 }
 
@@ -78,6 +79,64 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     border: none;
+}
+
+/*Meny*/
+.header__hamburger__close-menu {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url('../Assets/close.svg');
+    border: none;
+    position: absolute;
+    left: 20px; /* Justera avståndet från vänsterkanten enligt behov */
+    top: 20px; /* Justera avståndet från toppen enligt behov */
+    z-index: 1000; 
+}
+
+.container {
+    position: relative;  
+}
+
+.header__menu-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.header__menu {
+    display: none; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: var(--airbean-brown); 
+    z-index: 999; 
+}
+
+.header__menu-link {
+    display: block; 
+    text-decoration: none;
+    font-family: var(--font-family-heading-text);
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    padding: 0.7rem;
+}
+
+.header__menu-item {
+    list-style-type: none;
+}
+
+.header__menu-line {
+    width: 48px;
+    margin: 0.8rem auto;
+    border: solid 0.1rem #FFFFFF33;
 }
 
 

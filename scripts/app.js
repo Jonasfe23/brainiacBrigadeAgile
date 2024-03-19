@@ -8,9 +8,11 @@ window.addEventListener(`DOMContentLoaded`, () => {
 
     if (document.location.pathname.endsWith("login.html")) {
         initLogin();
+        addCloseButton(); 
     }
     if (document.location.pathname.endsWith("register.html")) {
         initRegistration();
+        addCloseButton(); 
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
         document.querySelector(`#cartIcon`).addEventListener(`click`, () => {
@@ -19,8 +21,9 @@ window.addEventListener(`DOMContentLoaded`, () => {
         
         populateMenu();
         userOrAdmin();
+        addCloseButton(); 
     }
-
+    
 })
 
 
@@ -303,4 +306,28 @@ function initRegistration() {
     });
 }
 
+function addCloseButton() {
+    const openMenuBtn = document.getElementById('openMenuBtn');
+    const menu = document.querySelector('.header__menu');
 
+    // Skapa stängningsknappen om den inte redan existerar
+    let closeMenuBtn = document.getElementById('closeMenuBtn');
+    if (!closeMenuBtn) {
+        closeMenuBtn = document.createElement('button');
+        closeMenuBtn.className = 'header__hamburger__close-menu';
+        closeMenuBtn.id = 'closeMenuBtn';
+        menu.appendChild(closeMenuBtn);
+
+        // Hantera klick på stängningsknappen
+        closeMenuBtn.addEventListener('click', () => {
+            menu.style.display = 'none';
+            openMenuBtn.style.display = 'block';
+        });
+    }
+
+    // Lägg till logik för att öppna menyn när användaren klickar på öppningsknappen
+    openMenuBtn.addEventListener('click', () => {
+        menu.style.display = 'block';
+        openMenuBtn.style.display = 'none'; // Dölj öppningsknappen när menyn är synlig
+    });
+}
