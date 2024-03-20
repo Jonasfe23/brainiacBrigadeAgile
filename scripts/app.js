@@ -8,18 +8,22 @@ window.addEventListener(`DOMContentLoaded`, () => {
 
     if (document.location.pathname.endsWith("login.html")) {
         initLogin();
+        addCloseButton();
     }
     if (document.location.pathname.endsWith("register.html")) {
         initRegistration();
+        addCloseButton();
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
         document.querySelector(`#orderButton`).addEventListener(`click`, createOrder);
         populateMenu();
         renderCart();
         userOrAdmin();
+        addCloseButton();
     }
     if (document.location.pathname.endsWith("profile.html")) {
         renderOrderHistory();
+        addCloseButton();
     }
 
 })
@@ -507,6 +511,29 @@ function renderOrderHistory() {
 
         listWrapperRef.appendChild(listItemRef);
 
+    });
+}
+
+function addCloseButton() {
+    const openMenuBtn = document.getElementById('openMenuBtn');
+    const menu = document.querySelector('.header__menu');
+
+    let closeMenuBtn = document.getElementById('closeMenuBtn');
+    if (!closeMenuBtn) {
+        closeMenuBtn = document.createElement('button');
+        closeMenuBtn.className = 'header__hamburger__close-menu';
+        closeMenuBtn.id = 'closeMenuBtn';
+        menu.appendChild(closeMenuBtn);
+
+        closeMenuBtn.addEventListener('click', () => {
+            menu.style.display = 'none';
+            openMenuBtn.style.display = 'block';
+        });
+    }
+
+    openMenuBtn.addEventListener('click', () => {
+        menu.style.display = 'block';
+        openMenuBtn.style.display = 'none';
     });
 }
 
