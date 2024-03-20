@@ -440,7 +440,7 @@ function createOrder() {
     try {
         const cart = getCart();
         const orders = getOrders();
-        const orderNumber = orders.length + 1;
+        const orderNumber = String(orders.length + 1).padStart(13, '0');
 
         const today = new Date();
         const year = today.getFullYear();
@@ -449,8 +449,6 @@ function createOrder() {
 
 
         const date = `${year}/${month}/${day}`
-
-        console.log(date);
     
         const loggedInUser = JSON.parse(localStorage.getItem(`loggedInUser`));
     
@@ -486,6 +484,7 @@ function renderOrderHistory() {
     const listWrapperRef = document.querySelector(`#orderHistoryList`);
 
     const totalSpentRef = document.querySelector(`#totalSpent`);
+    let totalSpent = 0; 
 
     orderHistory.forEach(order => {
 
@@ -502,17 +501,17 @@ function renderOrderHistory() {
 
         const orderTotalRef = document.createElement(`p`);
         orderTotalRef.classList.add(`orderhistory__tot-amount`);
-        orderTotalRef.textContent = `Totalsumma:`;
+        orderTotalRef.textContent = `total ordersumma:`;
 
         const orderPriceRef = document.createElement(`p`);
         orderPriceRef.classList.add(`orderhistory__price`);
 
         let priceOfOrder = 0;
-        let totalSpent = 0;       
+              
         
         order.order.forEach(itemOnOrder => {
             priceOfOrder += itemOnOrder.sum;
-            totalSpent += priceOfOrder;
+            totalSpent += itemOnOrder.sum;
         });
 
         orderPriceRef.textContent = `${priceOfOrder} kr`;
@@ -686,5 +685,7 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
     } else {
         alert('Användaren hittdes inte.');
     }
+}
 
-    // console.log(users);
+
+
