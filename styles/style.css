@@ -23,6 +23,7 @@ body {
     max-width: 400px;
     font-family: var(--font-family-default);
     color: var(--airbean-brown);
+
 }
 
 .content-wrapper {
@@ -844,3 +845,144 @@ body {
 
 }
 
+
+
+
+
+
+@media screen and (min-width: 500px) {
+    body {max-width: 650px;
+    }
+    .login-form{justify-content: center;}
+    
+    .cart{width: 450px;}
+    .cart{left: 52%;}
+    .cart__item{min-width: 400px;}
+    .cart__title{font-size: 2.2rem;}
+    .cart__item-inner-left h4{font-size: 1.25rem;}
+    .cart__item-inner-left p{font-size: .9rem;}
+    .cart__price-section-inner-left h3{font-size: 1.5rem;}
+    .cart__price-section-inner-left p{font-size: .8rem;}
+    .cart__price{font-size: 1.5rem;}
+    .cart__price-section{justify-content: space-around;}
+
+    .about{max-width: 1000px;
+    margin: 0 auto;}
+    .about__heading{display: flex;
+       justify-content: center;}
+    .about__text-one{font-size: 1rem;}   
+    .about__text-two, .about__text-three{font-size: .8rem;}   
+}
+
+@media screen and (min-width: 650px) {
+    body {max-width: 800px;
+    }
+    .menu-list{margin: 20px;}
+    .menu-list__coffe-title{font-size: 1.5rem; }
+    .menu-list__price{font-size: 1.5rem;}
+    .menu-list__about-coffee{font-size: .8rem;}
+    
+    .cart{left: 60%;}
+
+    .login-form__inner{max-width: 650px;}
+    .login-form__text-field{ max-width: 500px;}
+
+    .orderhistory__title{font-size: 1.6rem;}
+    .orderhistory__date{font-size: 1.1rem;}
+    .orderhistory__price{font-size: 1.1rem;}
+    .orderhistory__total{font-size: 1.1rem;}
+    .orderhistory__ordernumber{font-size: 1.1rem;}
+    .orderhistory__tot--amuont{font-size: 1.1rem;}
+    .orderhistory__spent--total{font-size: 1.5rem;}
+    .orderhistory__tot--sek{font-size: 1.5rem;}
+
+    .about__text-one{font-size: 1.3rem;}   
+    .about__text-two, .about__text-three{font-size: 1rem;}
+    .about__img-profile{width: 85px; height: 85px;}
+
+}
+
+@media screen and (min-width: 800px) {
+    body {max-width: 1000px;
+    }
+    .menu-list{margin: 40px;}
+    .menu-list__list-item{max-width: 800px;
+          margin: 0 auto;
+          margin-bottom: 20px;}
+    .productpage__coffemenu-title{font-size: 3rem;}
+    
+
+    .login-form__welcome{font-size: 2.5rem;}
+    .login-form__additional-text{font-size: 1.2rem;}
+    .login-form__label{font-size: 1.4rem;}
+    .login-form__register{font-size: 1.2rem;}
+
+    .cart{left: 70%;}
+    .cart__title{font-size: 2.2rem;}
+    .cart__item-inner-left h4{font-size: 1.25rem;}
+    .cart__item-inner-left p{font-size: .9rem;}
+    .cart__price-section-inner-left h3{font-size: 1.5rem;}
+    .cart__price-section-inner-left p{font-size: .8rem;}
+    .cart__price{font-size: 1.5rem;}
+    
+    
+
+    .profile__img{min-height: 120px;}
+    .profile__name{font-size: 1.3rem;}
+    .profile__email{font-size: 1rem;}
+    .orderhistory{margin-left: 4rem; margin-right: 4rem;}
+    .orderhistory__title{font-size: 1.8rem;}
+    .orderhistory__date{font-size: 1.3rem;}
+    .orderhistory__price{font-size: 1.3rem;}
+    .orderhistory__total{font-size: 1.3rem;}
+    .orderhistory__ordernumber{font-size: 1.3rem;}
+    .orderhistory__tot--amuont{font-size: 1.3rem;}
+    .orderhistory__spent--total{font-size: 1.8rem;}
+    .orderhistory__tot--sek{font-size: 1.8rem;}
+
+    .about__heading{font-size: 3rem;}
+}
+
+@media screen and (min-width: 1000px) {
+    body {max-width: 1200px;
+    }
+    .menu-list{
+       margin-left: 100px;
+       margin-right: 100px;}
+    .menu-list__coffe-title{font-size: 1.8rem; }
+    .menu-list__price{font-size: 1.8rem;}
+    .menu-list__about-coffee{font-size: 1rem;}
+    
+    .login-form__welcome{font-size: 2.8rem;}
+    .login-form__additional-text{font-size: 1.4rem;
+    max-width: 700px;}
+
+    .cart{left: 75%;}
+
+    .profile__img{min-height: 140px;}
+    .profile__name{font-size: 1.5rem;}
+    .profile__email{font-size: 1.3rem;}
+
+      
+   
+}
+
+@media screen and (min-width: 1200px) {
+    body {max-width: 1400px;
+    }
+    
+    .cart{left: 79%;}
+
+    .orderhistory{margin-left: 10rem; margin-right: 10rem;}
+}
+
+@media screen and (min-width: 1400px) {
+   
+    .menu-list{
+        margin-left: 165px;
+        margin-right: 165px;}
+        
+        .cart{left: 82%;}
+
+        .orderhistory{margin-left: 18rem; margin-right: 18rem;}
+}
