@@ -741,8 +741,9 @@ body {
     margin-bottom: 5rem;
 }
 
-.profile__img--container {
+.profile__img {
     height: 100px;
+    border-radius: 50%;
 }
 
 .profile__name {
@@ -756,6 +757,47 @@ body {
     font-family: var(--font-family-default);
     font-size: small;
     font-weight: 400;
+}
+
+.profile__edit--btn {
+    border: none;
+    background-color: var(--airbean-brown);
+    color: var(--airbean-pink);
+    font-family: var(--font-family-default);
+    border-bottom: 2px solid var(--airbean-pink);
+    cursor: pointer;
+}
+
+.edit__form {
+    color: var(--airbean-pink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.edit__form--input {
+    background-color: var(--airbean-brown);
+    border-radius: 5px;
+    border: 1px solid var(--airbean-pink);
+    padding: 1rem;
+    color: var(--airbean-pink);
+}
+
+.edit__form--btn {
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    margin-top: 1rem;
+    background-color: var(--airbean-pink);
+    font-family: var(--font-family-heading-text);
+    font-weight: 600;
+    font-size: larger;
+    cursor: pointer;
+}
+
+#editFormContainer {
+    display: none;
 }
 
 .orderhistory {

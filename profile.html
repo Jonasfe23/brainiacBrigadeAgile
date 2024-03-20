@@ -27,11 +27,31 @@
         <section class="profile">
             <section class="profile__inner">
                 <figure class="profile__img-container">
-                <img src="./Assets/profile.svg" alt="profile image" class="profile__img">
+                <img src="./Assets/profile.svg" alt="profile image" class="profile__img" id="profileImg">
                 </figure>
-                <h1 class="profile__name">Sixten Kaffelöver</h1>
-                <h3 class="profile__email">sixten.kaffelover@zocom.com</h3>
+                <h1 class="profile__name" id="username">Sixten Kaffelöver</h1>
+                <h3 class="profile__email" id="email">sixten.kaffelover@zocom.com</h3>
+                <button class="profile__edit--btn" id="editProfileBtn">Ändra din profil</button>
             </section>
+        </section>
+
+        <section id="editFormContainer">
+            <form class="edit__form" id="editForm">
+
+                <label for="newProfileImg">Byta profilbild:</label>
+                <input class="edit__form--input" type="text" id="newProfileImg" name="newProfileImg" placeholder="Klistra in URL till bilden här">
+
+                <label for="newUsername">Nytt Användarnamn:</label>
+                <input class="edit__form--input" type="text" id="newUsername" name="newUsername">
+
+                <label for="newEmail">Ny Email:</label>
+                <input class="edit__form--input" type="text" id="newEmail" name="newEmail">
+
+                <label for="newPassword">Nytt Lösenord</label>
+                <input class="edit__form--input" type="password" id="newPassword" name="newPassword">
+
+                <button class="edit__form--btn" type="submit" value="Save Changes">Spara ändringarna!</button>
+            </form>
         </section>
         
         <section class="orderhistory" id="orderHistory">
