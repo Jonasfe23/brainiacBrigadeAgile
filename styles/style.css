@@ -555,6 +555,7 @@ body {
     font-size: 42px;
     font-weight: 700;
     color: var(--airbean-brown);
+    text-indent: 1rem;
     margin: 1rem;
 }
 
@@ -598,7 +599,6 @@ body {
     width: 90%;
     color: var(--airbean-brown);
     margin: 1rem;
-    
     text-align: left;
 }
 
