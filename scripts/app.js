@@ -20,6 +20,17 @@ window.addEventListener(`DOMContentLoaded`, () => {
         populateMenu();
         userOrAdmin();
     }
+    if (document.location.pathname.endsWith("profile.html")) {
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const editFormContainer = document.getElementById('editFormContainer');
+
+        editProfileBtn.addEventListener('click', () => {
+        editFormContainer.style.display = 'block';
+
+        })
+        openEditForm()
+        updateProfile();
+    }
 
 })
 
@@ -304,3 +315,133 @@ function initRegistration() {
 }
 
 
+function updateProfile(newUsername, newEmail, newProfileImg) {
+    // Hämta den inloggade användaren från localStorage
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    const profileImg = document.getElementById('profileImg');
+    const usernameElement = document.getElementById('username');
+    const emailElement = document.getElementById('email');
+
+    // Kolla om det finns en inloggad användare
+    if (loggedInUser) {
+        // Hämta URL för antingen den nya eller befinliga bilden
+        const profileImgUrl = newProfileImg || loggedInUser.profile_image || '';
+        
+        if(profileImgUrl && profileImgUrl.trim() !== '') {
+            profileImg.src = profileImgUrl;
+            profileImg.alt = 'Profilbild';
+        } else {
+            profileImg.src = './Assets/profile.svg'; // Om ingen profilbild finns, använd en default
+            profileImg.alt = 'Default profile image';
+        }
+        
+        // Uppdatera usernameElement innehåll med det nya eller befintliga användarnamnet
+        if (newUsername !== undefined) {
+            usernameElement.textContent = newUsername;
+        } else {
+            usernameElement.textContent = loggedInUser.username;
+        }
+        
+        // Uppdatera emailElementets innehåll med den nya eller befintliga mailen
+        if (newEmail !== undefined) {
+            emailElement.textContent = newEmail;
+        } else {
+            emailElement.textContent = loggedInUser.email;
+        }
+
+    } else {
+        // Om ingen användare är inloggad
+        profileImg.src = './Assets/profile.svg';
+        profileImg.alt = 'Default profile image';
+
+        usernameElement.textContent = 'Gäst';
+        emailElement.textContent = '';
+    }
+}
+
+// Denna funktion aktiveras när användaren skickar formuläret för att ändra på användarinformaitonen
+function openEditForm() {
+    const editForm = document.getElementById('editForm');
+
+    editForm.addEventListener('submit', function (event){
+        event.preventDefault();
+
+        // Hämta de nya användaruppgifterna från formuläret
+        const newUsername = document.getElementById('newUsername').value;
+        const newEmail = document.getElementById('newEmail').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const newProfileImg = document.getElementById('newProfileImg').value;
+
+        updateUserInfo(newUsername, newEmail, newPassword, newProfileImg);
+        
+    });
+}
+
+// Denna funktion uppdaterar användarinformationen i localStorage och det som syns på sidan baserat på de nya uppgifterna
+function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
+    
+    // Hämta användarlistan från localStorage och konvertera den till ett array-objekt
+    let users = JSON.parse(localStorage.getItem('users'));
+    
+    // Hämta den inloggade användaren från localStorage och spara den i en variabel
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    const loggedInUsername = loggedInUser.username;
+    
+    // Hitta indexet för det inloggade användaren i användarlistan
+    const loggedInUserIndex = users.findIndex(user => user.username === loggedInUsername);
+
+    // Kolla om användaren finns i listan
+    if (loggedInUserIndex !== -1) {
+        
+        // Kolla om det nya användarnamnet redan används
+        if (newUsername && newUsername !== loggedInUsername) {
+            const usernameExists = users.some(user => user.username === newUsername);
+            if (usernameExists) {
+                alert('Användarnamnet är uppdaget. Vänligen välj något annat tack.');
+                return;
+            }
+        }
+        
+        // Uppdatera användarinformationen om något av fälten fylls i
+        if (newUsername !== undefined || newEmail !== undefined || newPassword || newProfileImg) {
+            
+            if (newUsername !== undefined && newUsername !== '') {
+                users[loggedInUserIndex].username = newUsername;
+                document.getElementById('username').textContent = newUsername;
+            } else {
+                newUsername = loggedInUser.username;
+            }
+            if (newEmail !== undefined && newEmail !== '') {
+                users[loggedInUserIndex].email = newEmail;
+                document.getElementById('email').textContent = newEmail;
+            } else {
+                newEmail = loggedInUser.email;
+            }
+            if (newPassword) {
+                users[loggedInUserIndex].password = newPassword;
+            }
+            if (newProfileImg) {
+                users[loggedInUserIndex].profile_image = newProfileImg;
+            }
+        
+            // Spara den uppdaterade användarlistan till localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Uppdatera profilsidan med den nya användarinformationen
+            updateProfile(newUsername, newEmail, newProfileImg);
+
+            alert('Ändringar sparade!');
+
+            // Dölj formuläret efter sparade ändringar
+            const editFormContainer = document.getElementById('editFormContainer');
+            editFormContainer.style.display = 'none';
+
+        }  
+
+    } else {
+        alert('Användaren hittdes inte.');
+    }
+
+    // console.log(users);
+}
