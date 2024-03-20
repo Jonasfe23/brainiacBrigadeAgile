@@ -46,6 +46,7 @@ async function usersToStorage() {
         }
 
         localStorage.setItem(`users`, JSON.stringify(users));
+        hideLoadingIndicator();
 
     } catch (error) {
         console.log(`Something went wrong at usersToStorage ` + error);
@@ -540,12 +541,9 @@ function addCloseButton() {
     });
 }
 
-
-
-
-
-
-
-
-
-
+function hideLoadingIndicator() {
+    const loadingIndicatorRef = document.querySelector(`#loadingIndicator`);
+    if (loadingIndicatorRef && !loadingIndicatorRef.classList.contains(`d-none`)) {
+        loadingIndicatorRef.classList.add(`d-none`);
+    }
+}
