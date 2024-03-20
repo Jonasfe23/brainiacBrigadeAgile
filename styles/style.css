@@ -164,6 +164,34 @@ body {
 
 /* index.html */
 
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    aspect-ratio: 1;
+    background-color: var(--airbean-green);
+    z-index: 9999;
+    user-select: none;
+}
+
+.loading-indicator__animation {
+    aspect-ratio: 1;
+    width: 80px;
+}
+
+.loading-indicator__wait-text {
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 1rem;
+}
+
+
 .landingpage {
     display: flex;
     justify-content: center;
