@@ -9,12 +9,22 @@
 </head>
 
 <body>
-    <div class="content-wrapper content-wrapper--pink">
-        <header class="header">
-            <nav class="header__nav-menu">
-                <button class="header__hamburger-menu"></button>
-            </nav>
-        </header>
+    <div class="menu-container">
+        <div class="content-wrapper content-wrapper--pink">
+            <header class="header">
+                <nav class="header__menu">
+                    <ul class="header__menu-list">
+                        <li class="header__menu-item"><a href="ProductPage.html" class="header__menu-link">Meny</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="aboutUs.html" class="header__menu-link">Vårt kaffe</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="profile.html" class="header__menu-link">Min profil</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="statusPage.html" class="header__menu-link">Orderstatus</a></li>
+                    </ul>
+                </nav>
+                <button class="header__hamburger-menu" id="openMenuBtn"></button>
+            </header>
 
         <section class="about">
             <h1 class="about__heading">Vårt Kaffe</h1>
@@ -55,7 +65,7 @@
 
         <footer class="footer footer--image"></footer>
     </div>
-
+</div>
     <script type="module" src="./scripts/app.js"></script>
 </body>
 
