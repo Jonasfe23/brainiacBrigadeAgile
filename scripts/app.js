@@ -25,6 +25,9 @@ window.addEventListener(`DOMContentLoaded`, () => {
         renderOrderHistory();
         addCloseButton();
     }
+    if (document.location.pathname.endsWith("aboutUs.html")) {
+        addCloseButton();
+    }
 
 })
 
