@@ -7,12 +7,22 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <div class="content-wrapper content-wrapper--brown">
-        <header class="header">
-            <nav class="header__nav-menu">
-                <button class="header__hamburger-menu"></button>
-            </nav>
-        </header> 
+    <div class="menu-container">
+        <div class="content-wrapper content-wrapper--brown">
+            <header class="header">
+                <nav class="header__menu">
+                    <ul class="header__menu-list">
+                        <li class="header__menu-item"><a href="ProductPage.html" class="header__menu-link">Meny</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="aboutUs.html" class="header__menu-link">Vårt kaffe</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="profile.html" class="header__menu-link">Min profil</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="statusPage.html" class="header__menu-link">Orderstatus</a></li>
+                    </ul>
+                </nav>
+                <button class="header__hamburger-menu" id="openMenuBtn"></button>
+            </header>
 
         <section class="profile">
             <section class="profile__inner">
@@ -44,35 +54,21 @@
             </form>
         </section>
         
-        <section class="orderhistory">
+        <section class="orderhistory" id="orderHistory">
             <h2 class="orderhistory__title">Orderhistorik:</h2>
-            <section class="orderhistory__first--order">
-                <h4 class="orderhistory__ordernumber">#123456</h4>
-                <p class="orderhistory__date">18-03/24</p>
-                <p class="orderhistory__tot--amount">Totalsumma:</p>
-                <p class="orderhistory__price">443 kr</p>
-            </section>
-            <section class="orderhistory__second--order">
-                <h4 class="orderhistory__ordernumber">#123456</h4>
-                <p class="orderhistory__date">18-03/24</p>
-                <p class="orderhistory__tot--amount">Totalsumma:</p>
-                <p class="orderhistory__price">443 kr</p>
-            </section>
-            <section class="orderhistory__third--order">
-                <h4 class="orderhistory__ordernumber">#123456</h4>
-                <p class="orderhistory__date">18-03/24</p>
-                <p class="orderhistory__tot--amount">Totalsumma:</p>
-                <p class="orderhistory__price">443 kr</p>
-            </section>
+            <ul class="orderhistory__list-wrapper" id="orderHistoryList">
+                <!-- List-items kommer att läggas till här dynamiskt -->
+            </ul>
+
             <section class="orderhistory__total">
-            <h3 class="orderhistory__spent--total">Spenderat totalt:</h3>
-            <p class="orderhistory__tot--sek">1329 kr</p>
+            <h3 class="orderhistory__spent-total">Totalt spenderat:</h3>
+            <p class="orderhistory__tot-sek" id="totalSpent"></p>
             </section>
         </section>
 
         <footer class="footer footer--brown"></footer>
     </div>
-
+</div>
     <script type="module" src="./scripts/app.js"></script>
 </body>
 </html>
