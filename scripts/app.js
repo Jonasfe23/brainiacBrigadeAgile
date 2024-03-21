@@ -3,18 +3,24 @@ import { login, register, userOrAdmin } from "./logInModule.js";
 import { getMenu, getUsers, getCart, getOrders } from "./localStorageModule.js";
 
 window.addEventListener(`DOMContentLoaded`, () => {
-    usersToStorage();
-    menuToStorage();
 
+
+    if (document.location.pathname.endsWith("index.html")) {
+        usersToStorage();
+        menuToStorage();
+    }
     if (document.location.pathname.endsWith("login.html")) {
+        usersToStorage();
         initLogin();
         addCloseButton();
     }
     if (document.location.pathname.endsWith("register.html")) {
+        usersToStorage();
         initRegistration();
         addCloseButton();
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
+        menuToStorage();
         document.querySelector(`#orderButton`).addEventListener(`click`, createOrder);
         populateMenu();
         renderCart();
@@ -22,13 +28,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
         addCloseButton();
     }
     if (document.location.pathname.endsWith("profile.html")) {
-        renderOrderHistory();
-        addCloseButton();
-    }
-    if (document.location.pathname.endsWith("aboutUs.html")) {
-        addCloseButton();
-    }
-    if (document.location.pathname.endsWith("profile.html")) {
+        usersToStorage();
         const editProfileBtn = document.getElementById('editProfileBtn');
         const editFormContainer = document.getElementById('editFormContainer');
 
@@ -36,10 +36,18 @@ window.addEventListener(`DOMContentLoaded`, () => {
         editFormContainer.style.display = 'block';
 
         })
+        renderOrderHistory();
         openEditForm()
         updateProfile();
+        addCloseButton();
+    }
+    if (document.location.pathname.endsWith("aboutUs.html")) {
+        addCloseButton();
     }
     if (document.location.pathname.endsWith("statusPage.html")){
+        document.querySelector(`#statusButton`).addEventListener(`click`, () => {
+            window.location.href = "ProductPage.html"
+        })
         startCountdown();
     }
 
@@ -732,12 +740,12 @@ function countDown(targetTime) {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Visa kvarvarande tid
-        document.getElementById("demo").innerHTML = minutes + " minuter " + seconds + " sekunder kvar";
+        document.getElementById("tid").innerHTML = minutes + " min " + seconds + " sek kvar";
 
         // Om tiden har gått ut, visa "EXPIRED" och rensa localStorage
         if (distance <= 0) {
             clearInterval(x);
-            document.getElementById("demo").innerHTML = "Den är klar";
+            document.getElementById("tid").innerHTML = "Den är klar";
             localStorage.removeItem("countDownTime");
         }
     }, 1000);
