@@ -467,6 +467,7 @@ function createOrder() {
         renderCart();
 
         document.querySelector(`#cart`).classList.add(`d-none`);
+        window.location.href = "statusPage.html";
 
     } catch (error) {
         console.log(`Something went wrong at createOrder: ` + error);
