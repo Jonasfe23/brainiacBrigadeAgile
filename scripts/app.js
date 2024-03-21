@@ -39,6 +39,9 @@ window.addEventListener(`DOMContentLoaded`, () => {
         openEditForm()
         updateProfile();
     }
+    if (document.location.pathname.endsWith("statusPage.html")){
+        startCountdown();
+    }
 
 })
 
@@ -694,5 +697,55 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
     }
 }
 
+
+
+
+
+    //Timer
+   // Funktion för att starta nedräkningen
+function startCountdown() {
+    // Kontrollera om det finns en sparad tid i localStorage
+    var savedTime = localStorage.getItem("countDownTime");
+
+    // Om det finns en sparad tid, starta nedräkningen med den sparade tiden
+    if (savedTime) {
+        countDown(savedTime);
+    } else {
+        // Annars starta en ny nedräkning med 8 minuter
+        var now = new Date().getTime();
+        var futureTime = now + 8 * 60 * 1000; // Tid om 8 minuter
+        countDown(futureTime);
+    }
+}
+
+// Funktion för nedräkningen
+function countDown(targetTime) {
+    var x = setInterval(function() {
+        // Hämta nuvarande tid
+        var now = new Date().getTime();
+
+        // Beräkna återstående tid i millisekunder
+        var distance = targetTime - now;
+
+        // Beräkna minuter och sekunder från millisekunder
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Visa kvarvarande tid
+        document.getElementById("demo").innerHTML = minutes + " minuter " + seconds + " sekunder kvar";
+
+        // Om tiden har gått ut, visa "EXPIRED" och rensa localStorage
+        if (distance <= 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Den är klar";
+            localStorage.removeItem("countDownTime");
+        }
+    }, 1000);
+
+    // Spara måltiden i localStorage för att fortsätta nedräkningen efter siduppdateringar
+    localStorage.setItem("countDownTime", targetTime);
+}
+
+// Starta nedräkningen när sidan laddas
 
 
