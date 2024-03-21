@@ -46,6 +46,11 @@ main {
 
 .content-wrapper--orange {
     background-color: var(--airbean-orange);
+    
+}
+
+.content-wrapper--align {
+    align-items: center;
 }
 
 /* Header */
@@ -862,8 +867,7 @@ main {
 
 /* status page */
 
-.status-page__body{
-    margin: 0 auto;
+.inner-wrapper {
     padding: 0;
     min-width: 100vw;
     color: #ffffff;

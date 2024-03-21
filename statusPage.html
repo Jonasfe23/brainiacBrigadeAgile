@@ -8,22 +8,21 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
-<body class="status-page__body">
-    <div class="content-wrapper content-wrapper--orange">
-        <section class="status-page__ordernumber-drone">
-            <p class="status-page__ordernumber">Ordernummer #12DV23F</p>
-            <img src="Assets/drone.svg" alt="drone">
-        </section>
+<body>
+    <div class="content-wrapper content-wrapper--orange content-wrapper--align">
+        <div class="inner-wrapper">
+            <section class="status-page__ordernumber-drone">
+                <p class="status-page__ordernumber" id="ordernummer">Ordernummer #12DV23F</p>
+                <img src="Assets/drone.svg" alt="drone">
+            </section>
 
-        <section class="status-page__title-delivery">
-            <h1 class="status-page__title">Din beställning är på väg!</h1>
-            <h3 class="status-page__delivery-time"> 13 minuter</h3>
-        </section>
-
-
-        <button class="status-page__button">Ok, cool!</button>
+            <section class="status-page__title-delivery">
+                <h1 class="status-page__title">Din beställning är på väg!</h1>
+                <h3 class="status-page__delivery-time" id="tid"></h3>
+            </section>
+            <button class="status-page__button" id="statusButton">Ok, cool!</button>
+        </div>
     </div>
-
     <script type="module" src="./scripts/app.js"></script>
 </body>
 
