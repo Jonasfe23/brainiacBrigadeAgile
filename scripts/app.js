@@ -98,11 +98,11 @@ function populateMenu() {
             const menuItemContainerRef = document.createElement(`li`);
             menuItemContainerRef.classList.add(`menu-list__list-item`)
 
-            const menuItemButtonRef = document.createElement(`img`);
+            const menuItemButtonRef = document.createElement(`button`);
             menuItemButtonRef.classList.add(`menu-list__button`, `menu-list__button--add`);
-            menuItemButtonRef.src = '../Assets/add.svg';
-            menuItemButtonRef.alt = "Button to add item to cart";
             menuItemButtonRef.dataset.id = coffee.id;
+            menuItemButtonRef.dataset.title = coffee.title;
+            menuItemButtonRef.ariaLabel = `Lägg till ${menuItemButtonRef.dataset.title} i din varukorg`;
             menuItemButtonRef.addEventListener(`click`, sendToCart);
 
             menuItemContainerRef.appendChild(menuItemButtonRef);
@@ -110,7 +110,7 @@ function populateMenu() {
             const coffeeInfoWrapperRef = document.createElement(`div`);
             coffeeInfoWrapperRef.classList.add(`menu-list__info-wrapper`);
 
-            const coffeeTitleRef = document.createElement(`h3`);
+            const coffeeTitleRef = document.createElement(`h2`);
             coffeeTitleRef.classList.add(`menu-list__coffe-title`)
             coffeeTitleRef.textContent = coffee.title;
 
@@ -124,7 +124,7 @@ function populateMenu() {
 
             menuItemContainerRef.appendChild(coffeeInfoWrapperRef)
 
-            const coffeePriceRef = document.createElement(`p`);
+            const coffeePriceRef = document.createElement(`h3`);
             coffeePriceRef.classList.add(`menu-list__price`);
             coffeePriceRef.textContent = `${coffee.price} kr`;
 
@@ -227,13 +227,11 @@ export function editMenuToggle() {
         button.classList.toggle(`menu-list__button--add`);
 
         if (button.classList.contains(`menu-list__button--remove`)) {
-            button.src = `../Assets/remove.svg`;
-            button.alt = `Button to remove items from menu`
+            button.ariaLabel = `Ta bort ${button.dataset.title} från menyn.`
             button.removeEventListener(`click`, sendToCart);
             button.addEventListener(`click`, removeFromMenu);
         } else {
-            button.src = `../Assets/add.svg`;
-            button.alt = "Button to add item to cart";
+            button.ariaLabel = `Lägg till ${button.dataset.title} i din varukorg`
             button.removeEventListener(`click`, removeFromMenu);
             button.addEventListener(`click`, sendToCart);
         }
