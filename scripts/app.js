@@ -3,18 +3,24 @@ import { login, register, userOrAdmin } from "./logInModule.js";
 import { getMenu, getUsers, getCart, getOrders } from "./localStorageModule.js";
 
 window.addEventListener(`DOMContentLoaded`, () => {
-    usersToStorage();
-    menuToStorage();
 
+
+    if (document.location.pathname.endsWith("index.html")) {
+        usersToStorage();
+        menuToStorage();
+    }
     if (document.location.pathname.endsWith("login.html")) {
+        usersToStorage();
         initLogin();
         addCloseButton();
     }
     if (document.location.pathname.endsWith("register.html")) {
+        usersToStorage();
         initRegistration();
         addCloseButton();
     }
     if (document.location.pathname.endsWith("ProductPage.html")) {
+        menuToStorage();
         document.querySelector(`#orderButton`).addEventListener(`click`, createOrder);
         populateMenu();
         renderCart();
@@ -22,13 +28,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
         addCloseButton();
     }
     if (document.location.pathname.endsWith("profile.html")) {
-        renderOrderHistory();
-        addCloseButton();
-    }
-    if (document.location.pathname.endsWith("aboutUs.html")) {
-        addCloseButton();
-    }
-    if (document.location.pathname.endsWith("profile.html")) {
+        usersToStorage();
         const editProfileBtn = document.getElementById('editProfileBtn');
         const editFormContainer = document.getElementById('editFormContainer');
 
@@ -36,10 +36,14 @@ window.addEventListener(`DOMContentLoaded`, () => {
         editFormContainer.style.display = 'block';
 
         })
+        renderOrderHistory();
         openEditForm()
         updateProfile();
+        addCloseButton();
     }
-
+    if (document.location.pathname.endsWith("aboutUs.html")) {
+        addCloseButton();
+    }
 })
 
 
@@ -693,6 +697,3 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
         alert('Användaren hittdes inte.');
     }
 }
-
-
-

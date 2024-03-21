@@ -44,6 +44,10 @@ main {
     background-color: var(--airbean-pink);
 }
 
+.content-wrapper--orange {
+    background-color: var(--airbean-orange);
+}
+
 /* Header */
 .header {
     background-image: url('../Assets/graphics-header.svg');
@@ -861,8 +865,7 @@ main {
 .status-page__body{
     margin: 0 auto;
     padding: 0;
-    max-width: 375px;
-    background-color: rgb(207, 108, 80);
+    min-width: 100vw;
     color: #ffffff;
     display: flex;
     flex-direction: column;
