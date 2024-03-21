@@ -40,7 +40,7 @@ window.addEventListener(`DOMContentLoaded`, () => {
         updateProfile();
     }
     if (document.location.pathname.endsWith("statusPage.html")){
-        window.onload = startCountdown;
+        startCountdown();
     }
 
 })
