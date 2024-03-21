@@ -538,6 +538,8 @@ function addCloseButton() {
         closeMenuBtn.id = 'closeMenuBtn';
         menu.appendChild(closeMenuBtn);
 
+        closeMenuBtn.setAttribute('aria-label', 'Close menu');
+
         closeMenuBtn.addEventListener('click', () => {
             menu.style.display = 'none';
             openMenuBtn.style.display = 'block';
