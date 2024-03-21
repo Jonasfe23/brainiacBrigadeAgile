@@ -318,6 +318,11 @@ main {
     margin-right: .5rem;
 }
 
+.login-form__gdpr-btn:focus, 
+.login-form__register-btn:focus {
+    outline: 2px solid black;
+}
+
 .login-form__gdpr-btn:checked, 
 .login-form__register-btn:checked {
     content: '';
