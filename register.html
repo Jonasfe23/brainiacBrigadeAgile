@@ -23,24 +23,24 @@
                         <li class="header__menu-item"><a href="statusPage.html" class="header__menu-link">Orderstatus</a></li>
                     </ul>
                 </nav>
-                <button class="header__hamburger-menu" id="openMenuBtn"></button>
+                <button class="header__hamburger-menu" id="openMenuBtn" aria-label="Open menu"></button>
             </header>
 
         <section class="login-form" id="registerForm">
 
             <section class="login-form__inner">
                 <img src="./Assets/logo-sml.svg" alt="Small logo" class="login-form__small-logo">
-                <h2 class="login-form__welcome">Välkommen till Airbean-familjen!</h2>
-                <h3 class="login-form__additional-text">Genom att skapa ett konto nedan kan du se och spara din orderhistorik</h3>
+                <h1 class="login-form__welcome">Välkommen till Airbean-familjen!</h1>
+                <h2 class="login-form__additional-text">Genom att skapa ett konto nedan kan du se och spara din orderhistorik</h2>
                 <form class="login-form__form">
                     <label class="login-form__label" for="username">Användarnamn:</label>
-                    <input class="login-form__text-field" type="text" name="regUsername" required>
+                    <input class="login-form__text-field" id="username" type="text" name="regUsername" required>
 
                     <label class="login-form__label" for="password">Lösenord:</label>
-                    <input class="login-form__text-field" type="password" name="regPassword" required>
+                    <input class="login-form__text-field" id="password" type="password" name="regPassword" required>
 
-                    <label class="login-form__label" for="password">Upprepa lösenord:</label>
-                    <input class="login-form__text-field" type="password" name="regConfirmPassword" required>
+                    <label class="login-form__label" for="password-again">Upprepa lösenord:</label>
+                    <input class="login-form__text-field" id="password-again" type="password" name="regConfirmPassword" required>
 
                     <label class="login-form__label">
                         <input class="login-form__register-btn" type="checkbox" name="gdpr"> GDPR ok!

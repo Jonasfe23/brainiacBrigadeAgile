@@ -98,11 +98,11 @@ function populateMenu() {
             const menuItemContainerRef = document.createElement(`li`);
             menuItemContainerRef.classList.add(`menu-list__list-item`)
 
-            const menuItemButtonRef = document.createElement(`img`);
+            const menuItemButtonRef = document.createElement(`button`);
             menuItemButtonRef.classList.add(`menu-list__button`, `menu-list__button--add`);
-            menuItemButtonRef.src = '../Assets/add.svg';
-            menuItemButtonRef.alt = "Button to add item to cart";
             menuItemButtonRef.dataset.id = coffee.id;
+            menuItemButtonRef.dataset.title = coffee.title;
+            menuItemButtonRef.ariaLabel = `Lägg till ${menuItemButtonRef.dataset.title} i din varukorg`;
             menuItemButtonRef.addEventListener(`click`, sendToCart);
 
             menuItemContainerRef.appendChild(menuItemButtonRef);
@@ -110,7 +110,7 @@ function populateMenu() {
             const coffeeInfoWrapperRef = document.createElement(`div`);
             coffeeInfoWrapperRef.classList.add(`menu-list__info-wrapper`);
 
-            const coffeeTitleRef = document.createElement(`h3`);
+            const coffeeTitleRef = document.createElement(`h2`);
             coffeeTitleRef.classList.add(`menu-list__coffe-title`)
             coffeeTitleRef.textContent = coffee.title;
 
@@ -124,7 +124,7 @@ function populateMenu() {
 
             menuItemContainerRef.appendChild(coffeeInfoWrapperRef)
 
-            const coffeePriceRef = document.createElement(`p`);
+            const coffeePriceRef = document.createElement(`h3`);
             coffeePriceRef.classList.add(`menu-list__price`);
             coffeePriceRef.textContent = `${coffee.price} kr`;
 
@@ -227,13 +227,11 @@ export function editMenuToggle() {
         button.classList.toggle(`menu-list__button--add`);
 
         if (button.classList.contains(`menu-list__button--remove`)) {
-            button.src = `../Assets/remove.svg`;
-            button.alt = `Button to remove items from menu`
+            button.ariaLabel = `Ta bort ${button.dataset.title} från menyn.`
             button.removeEventListener(`click`, sendToCart);
             button.addEventListener(`click`, removeFromMenu);
         } else {
-            button.src = `../Assets/add.svg`;
-            button.alt = "Button to add item to cart";
+            button.ariaLabel = `Lägg till ${button.dataset.title} i din varukorg`
             button.removeEventListener(`click`, removeFromMenu);
             button.addEventListener(`click`, sendToCart);
         }
@@ -440,7 +438,7 @@ function createOrder() {
     try {
         const cart = getCart();
         const orders = getOrders();
-        const orderNumber = orders.length + 1;
+        const orderNumber = String(orders.length + 1).padStart(13, '0');
 
         const today = new Date();
         const year = today.getFullYear();
@@ -449,8 +447,6 @@ function createOrder() {
 
 
         const date = `${year}/${month}/${day}`
-
-        console.log(date);
     
         const loggedInUser = JSON.parse(localStorage.getItem(`loggedInUser`));
     
@@ -469,6 +465,7 @@ function createOrder() {
         renderCart();
 
         document.querySelector(`#cart`).classList.add(`d-none`);
+        window.location.href = "statusPage.html";
 
     } catch (error) {
         console.log(`Something went wrong at createOrder: ` + error);
@@ -486,6 +483,7 @@ function renderOrderHistory() {
     const listWrapperRef = document.querySelector(`#orderHistoryList`);
 
     const totalSpentRef = document.querySelector(`#totalSpent`);
+    let totalSpent = 0; 
 
     orderHistory.forEach(order => {
 
@@ -502,17 +500,17 @@ function renderOrderHistory() {
 
         const orderTotalRef = document.createElement(`p`);
         orderTotalRef.classList.add(`orderhistory__tot-amount`);
-        orderTotalRef.textContent = `Totalsumma:`;
+        orderTotalRef.textContent = `total ordersumma:`;
 
         const orderPriceRef = document.createElement(`p`);
         orderPriceRef.classList.add(`orderhistory__price`);
 
         let priceOfOrder = 0;
-        let totalSpent = 0;       
+              
         
         order.order.forEach(itemOnOrder => {
             priceOfOrder += itemOnOrder.sum;
-            totalSpent += priceOfOrder;
+            totalSpent += itemOnOrder.sum;
         });
 
         orderPriceRef.textContent = `${priceOfOrder} kr`;
@@ -539,6 +537,8 @@ function addCloseButton() {
         closeMenuBtn.className = 'header__hamburger__close-menu';
         closeMenuBtn.id = 'closeMenuBtn';
         menu.appendChild(closeMenuBtn);
+
+        closeMenuBtn.setAttribute('aria-label', 'Close menu');
 
         closeMenuBtn.addEventListener('click', () => {
             menu.style.display = 'none';
@@ -652,12 +652,16 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
             
             if (newUsername !== undefined && newUsername !== '') {
                 users[loggedInUserIndex].username = newUsername;
+                localStorage.setItem('loggedInUser', JSON.stringify(users[loggedInUserIndex]));
+                updateProfile(newUsername);
                 document.getElementById('username').textContent = newUsername;
             } else {
                 newUsername = loggedInUser.username;
             }
             if (newEmail !== undefined && newEmail !== '') {
                 users[loggedInUserIndex].email = newEmail;
+                localStorage.setItem('loggedInUser', JSON.stringify(users[loggedInUserIndex]));
+                updateProfile(newEmail);
                 document.getElementById('email').textContent = newEmail;
             } else {
                 newEmail = loggedInUser.email;
@@ -667,6 +671,8 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
             }
             if (newProfileImg) {
                 users[loggedInUserIndex].profile_image = newProfileImg;
+                localStorage.setItem('loggedInUser', JSON.stringify(users[loggedInUserIndex]));
+                updateProfile(newProfileImg);
             }
         
             // Spara den uppdaterade användarlistan till localStorage
@@ -686,5 +692,7 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
     } else {
         alert('Användaren hittdes inte.');
     }
+}
 
-    // console.log(users);
+
+
