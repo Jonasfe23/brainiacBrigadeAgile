@@ -23,21 +23,21 @@
                         <li class="header__menu-item"><a href="statusPage.html" class="header__menu-link">Orderstatus</a></li>
                     </ul>
                 </nav>
-                <button class="header__hamburger-menu" id="openMenuBtn"></button>
+                <button class="header__hamburger-menu" id="openMenuBtn" aria-label="Open menu"></button>
             </header>
 
         <section class="login-form" id="loginForm">
 
             <section class="login-form__inner">
                 <img src="./Assets/logo-sml.svg" alt="Small logo" class="login-form__small-logo">
-                <h2 class="login-form__welcome">Välkommen till Airbean-familjen!</h2>
-                <h3 class="login-form__additional-text">Genom att skapa ett konto nedan kan du se och spara din orderhistorik</h3>
+                <h1 class="login-form__welcome">Välkommen till Airbean-familjen!</h1>
+                <h2 class="login-form__additional-text">Genom att logga in kan du se och spara din orderhistorik</h2>
                 <form class="login-form__form">
                     <label class="login-form__label" for="username">Användarnamn:</label>
-                    <input class="login-form__text-field" type="login-form__text" name="username" required>
+                    <input class="login-form__text-field" id="username" type="login-form__text" name="username" required>
 
                     <label class="login-form__label" for="password">Lösenord:</label>
-                    <input class="login-form__text-field" type="password" name="password" required>
+                    <input class="login-form__text-field" id="password" type="password" name="password" required>
 
                     <label class="login-form__label">
                         <input class="login-form__gdpr-btn" type="checkbox" name="gdpr"> GDPR ok!

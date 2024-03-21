@@ -20,13 +20,20 @@
 
 body {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 100vw;
     font-family: var(--font-family-default);
     color: var(--airbean-brown);
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 .content-wrapper {
-    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .content-wrapper--brown {
@@ -81,7 +88,7 @@ body {
     top: -5%;
     right: 0;
     color: white;
-    background-color: var(--airbean-orange);
+    background-color: #ce482d;
     aspect-ratio: 1;
     width: 1.3rem;
     border-radius: 50%;
@@ -311,12 +318,18 @@ body {
     margin-right: .5rem;
 }
 
+.login-form__gdpr-btn:focus, 
+.login-form__register-btn:focus {
+    outline: 2px solid black;
+}
+
 .login-form__gdpr-btn:checked, 
 .login-form__register-btn:checked {
     content: '';
     clip-path: circle(50% at 50% 50%);
     background-color: var(--airbean-green);
     padding: 2px;
+    box-shadow: inset 0 0 0 2px var(--airbean-pink);
 }
 
 .login-form__register {
@@ -452,16 +465,15 @@ body {
 
 .productpage__coffemenu-title {
     font-family: var(--font-family-heading-text);
-    font-size: 2rem;
+    font-size: 2.625rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 0; 
+    margin: 3rem 0;
 }
 
 .menu-list {
-    min-height: 66vh;
     padding: 0;
     margin: 10px;
     list-style: none;
@@ -474,7 +486,7 @@ body {
 }
 
 .menu-list__button {
-    width: 28px;
+    width: 30px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     margin-right: 10px;
@@ -482,15 +494,24 @@ body {
     padding: 6px;
     margin: 8px;
     cursor: pointer;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.2rem;
+}
+
+.menu-list__button:active {
+    scale: .96;
 }
 
 .menu-list__button--add {
+    background-image: url(../Assets/add.svg);
     background-color: #2F2926;
 }
 
 .menu-list__button--remove {
     background-color: #FF0000;
-
+    background-image: url(../Assets/remove.svg);
 }
 
 .menu-list__info-wrapper{
@@ -536,8 +557,7 @@ body {
 
 .edit-menu__button,
 .edit-menu__submit-button {
-    background-color: #4CAF50; 
-    background-color: var(--airbean-dark-green); 
+    background-color: green; 
     border: none;
     color: white;
     padding: 10px 20px;
@@ -551,20 +571,15 @@ body {
 
 .edit-menu__button:hover,
 .edit-menu__submit-button:hover {
-    background-color: #45a049;
-}
-
-.edit-menu__button:active {
-
-    background-color: var(--airbean-green);
+    background-color: rgb(7, 156, 7);
 }
 
 .edit-menu__button--red {
-    background-color: red;
+    background-color: rgb(207, 10, 10);
 }
 
 .edit-menu__button--red:hover {
-    background-color: rgb(216, 9, 9);
+    background-color: rgb(218, 21, 21);
 }
 
 .edit-menu__form {
@@ -632,6 +647,7 @@ body {
 
 .about {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     margin: 0 2rem;
@@ -914,3 +930,144 @@ body {
 
 }
 
+
+
+
+
+
+@media screen and (min-width: 500px) {
+    body {max-width: 650px;
+    }
+    .login-form{justify-content: center;}
+    
+    .cart{width: 450px;}
+    .cart{left: 52%;}
+    .cart__item{min-width: 400px;}
+    .cart__title{font-size: 2.2rem;}
+    .cart__item-inner-left h4{font-size: 1.25rem;}
+    .cart__item-inner-left p{font-size: .9rem;}
+    .cart__price-section-inner-left h3{font-size: 1.5rem;}
+    .cart__price-section-inner-left p{font-size: .8rem;}
+    .cart__price{font-size: 1.5rem;}
+    .cart__price-section{justify-content: space-around;}
+
+    .about{max-width: 1000px;
+    margin: 0 auto;}
+    .about__heading{display: flex;
+       justify-content: center;}
+    .about__text-one{font-size: 1rem;}   
+    .about__text-two, .about__text-three{font-size: .8rem;}   
+}
+
+@media screen and (min-width: 650px) {
+    body {max-width: 800px;
+    }
+    .menu-list{margin: 20px;}
+    .menu-list__coffe-title{font-size: 1.5rem; }
+    .menu-list__price{font-size: 1.5rem;}
+    .menu-list__about-coffee{font-size: .8rem;}
+    
+    .cart{left: 60%;}
+
+    .login-form__inner{max-width: 650px;}
+    .login-form__text-field{ max-width: 500px;}
+
+    .orderhistory__title{font-size: 1.6rem;}
+    .orderhistory__date{font-size: 1.1rem;}
+    .orderhistory__price{font-size: 1.1rem;}
+    .orderhistory__total{font-size: 1.1rem;}
+    .orderhistory__ordernumber{font-size: 1.1rem;}
+    .orderhistory__tot--amuont{font-size: 1.1rem;}
+    .orderhistory__spent--total{font-size: 1.5rem;}
+    .orderhistory__tot--sek{font-size: 1.5rem;}
+
+    .about__text-one{font-size: 1.3rem;}   
+    .about__text-two, .about__text-three{font-size: 1rem;}
+    .about__img-profile{width: 85px; height: 85px;}
+
+}
+
+@media screen and (min-width: 800px) {
+    body {max-width: 1000px;
+    }
+    .menu-list{margin: 40px;}
+    .menu-list__list-item{max-width: 800px;
+          margin: 0 auto;
+          margin-bottom: 20px;}
+    .productpage__coffemenu-title{font-size: 3rem;}
+    
+
+    .login-form__welcome{font-size: 2.5rem;}
+    .login-form__additional-text{font-size: 1.2rem;}
+    .login-form__label{font-size: 1.4rem;}
+    .login-form__register{font-size: 1.2rem;}
+
+    .cart{left: 70%;}
+    .cart__title{font-size: 2.2rem;}
+    .cart__item-inner-left h4{font-size: 1.25rem;}
+    .cart__item-inner-left p{font-size: .9rem;}
+    .cart__price-section-inner-left h3{font-size: 1.5rem;}
+    .cart__price-section-inner-left p{font-size: .8rem;}
+    .cart__price{font-size: 1.5rem;}
+    
+    
+
+    .profile__img{min-height: 120px;}
+    .profile__name{font-size: 1.3rem;}
+    .profile__email{font-size: 1rem;}
+    .orderhistory{margin-left: 4rem; margin-right: 4rem;}
+    .orderhistory__title{font-size: 1.8rem;}
+    .orderhistory__date{font-size: 1.3rem;}
+    .orderhistory__price{font-size: 1.3rem;}
+    .orderhistory__total{font-size: 1.3rem;}
+    .orderhistory__ordernumber{font-size: 1.3rem;}
+    .orderhistory__tot--amuont{font-size: 1.3rem;}
+    .orderhistory__spent--total{font-size: 1.8rem;}
+    .orderhistory__tot--sek{font-size: 1.8rem;}
+
+    .about__heading{font-size: 3rem;}
+}
+
+@media screen and (min-width: 1000px) {
+    body {max-width: 1200px;
+    }
+    .menu-list{
+       margin-left: 100px;
+       margin-right: 100px;}
+    .menu-list__coffe-title{font-size: 1.8rem; }
+    .menu-list__price{font-size: 1.8rem;}
+    .menu-list__about-coffee{font-size: 1rem;}
+    
+    .login-form__welcome{font-size: 2.8rem;}
+    .login-form__additional-text{font-size: 1.4rem;
+    max-width: 700px;}
+
+    .cart{left: 75%;}
+
+    .profile__img{min-height: 140px;}
+    .profile__name{font-size: 1.5rem;}
+    .profile__email{font-size: 1.3rem;}
+
+      
+   
+}
+
+@media screen and (min-width: 1200px) {
+    body {max-width: 1400px;
+    }
+    
+    .cart{left: 79%;}
+
+    .orderhistory{margin-left: 10rem; margin-right: 10rem;}
+}
+
+@media screen and (min-width: 1400px) {
+   
+    .menu-list{
+        margin-left: 165px;
+        margin-right: 165px;}
+        
+        .cart{left: 82%;}
+
+        .orderhistory{margin-left: 18rem; margin-right: 18rem;}
+}
