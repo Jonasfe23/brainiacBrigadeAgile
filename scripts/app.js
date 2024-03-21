@@ -472,9 +472,8 @@ function createOrder() {
     
         localStorage.setItem(`orders`, JSON.stringify(orders));
         localStorage.removeItem(`cart`);
-
-        renderCart();
-
+        localStorage.removeItem(`countDownTime`);
+        localStorage.setItem(`activeOrder`, true);
         document.querySelector(`#cart`).classList.add(`d-none`);
         window.location.href = "statusPage.html";
 
@@ -713,21 +712,32 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
    // Funktion för att starta nedräkningen
 function startCountdown() {
     // Kontrollera om det finns en sparad tid i localStorage
+    let activeOrder = localStorage.getItem(`activeOrder`);
     var savedTime = localStorage.getItem("countDownTime");
 
-    // Om det finns en sparad tid, starta nedräkningen med den sparade tiden
-    if (savedTime) {
-        countDown(savedTime);
+    if (activeOrder) {
+        // Om det finns en sparad tid, starta nedräkningen med den sparade tiden
+        if (savedTime) {
+            countDown(savedTime);
+        } else {
+            // Annars starta en ny nedräkning med 8 minuter
+            var now = new Date().getTime();
+            var futureTime = now + 1 * 60 * 1000; // Tid om 8 minuter
+            countDown(futureTime);
+        }
     } else {
-        // Annars starta en ny nedräkning med 8 minuter
-        var now = new Date().getTime();
-        var futureTime = now + 8 * 60 * 1000; // Tid om 8 minuter
-        countDown(futureTime);
+        document.querySelector(`#statusTitle`).textContent = `Inget att spåra!`
     }
 }
 
 // Funktion för nedräkningen
 function countDown(targetTime) {
+
+    let orders = getOrders();
+    let loggedInUser = JSON.parse(localStorage.getItem(`loggedInUser`));
+    let customersOrders = orders.filter(order => order.customer === loggedInUser.username);
+    let latestOrder = customersOrders.length - 1;
+
     var x = setInterval(function() {
         // Hämta nuvarande tid
         var now = new Date().getTime();
@@ -740,13 +750,21 @@ function countDown(targetTime) {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Visa kvarvarande tid
-        document.getElementById("tid").innerHTML = minutes + " min " + seconds + " sek kvar";
+        let orderNumberRef = document.querySelector(`#ordernummer`);
+        let tidRef = document.querySelector(`#tid`);
+        let statusRef = document.querySelector(`#statusTitle`);
+        orderNumberRef.textContent = `#${customersOrders[latestOrder].ordernumber}`;
+        statusRef.textContent = `Din beställning är på väg!`
+        tidRef.innerHTML = minutes + " min " + seconds + " sek kvar";
 
         // Om tiden har gått ut, visa "EXPIRED" och rensa localStorage
         if (distance <= 0) {
             clearInterval(x);
-            document.getElementById("tid").innerHTML = "Den är klar";
+            statusRef.textContent = ``
+            tidRef.innerHTML = "Framme!";
+            orderNumberRef.textContent = ``;
             localStorage.removeItem("countDownTime");
+            localStorage.removeItem("activeOrder");
         }
     }, 1000);
 
