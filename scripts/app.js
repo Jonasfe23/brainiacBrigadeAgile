@@ -652,12 +652,16 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
             
             if (newUsername !== undefined && newUsername !== '') {
                 users[loggedInUserIndex].username = newUsername;
+                localStorage.setItem('loggedInUser', JSON.stringify(users[loggedInUserIndex]));
+                updateProfile(newUsername);
                 document.getElementById('username').textContent = newUsername;
             } else {
                 newUsername = loggedInUser.username;
             }
             if (newEmail !== undefined && newEmail !== '') {
                 users[loggedInUserIndex].email = newEmail;
+                localStorage.setItem('loggedInUser', JSON.stringify(users[loggedInUserIndex]));
+                updateProfile(newEmail);
                 document.getElementById('email').textContent = newEmail;
             } else {
                 newEmail = loggedInUser.email;
@@ -667,6 +671,8 @@ function updateUserInfo(newUsername, newEmail, newPassword, newProfileImg) {
             }
             if (newProfileImg) {
                 users[loggedInUserIndex].profile_image = newProfileImg;
+                localStorage.setItem('loggedInUser', JSON.stringify(users[loggedInUserIndex]));
+                updateProfile(newProfileImg);
             }
         
             // Spara den uppdaterade användarlistan till localStorage
