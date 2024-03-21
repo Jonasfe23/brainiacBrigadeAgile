@@ -753,7 +753,7 @@ function countDown(targetTime) {
         let orderNumberRef = document.querySelector(`#ordernummer`);
         let tidRef = document.querySelector(`#tid`);
         let statusRef = document.querySelector(`#statusTitle`);
-        orderNumberRef.textContent = `#${customersOrders[latestOrder].ordernumber}`;
+        orderNumberRef.textContent = `Ordernummer #${customersOrders[latestOrder].ordernumber}`;
         statusRef.textContent = `Din beställning är på väg!`
         tidRef.innerHTML = minutes + " min " + seconds + " sek kvar";
 
