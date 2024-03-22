@@ -9,9 +9,15 @@
 </head>
 
 <body>
-    <main class="landingPage">
-        <section class="landingPage_content">
-            <a href="login.html"><img class="landingPage_landing_logo" src="Assets/airbean-landing.svg" alt="Logo"></a>
+
+    <div role="status" aria-live="polite" aria-label="Loading... Please wait." class="loading-indicator" id="loadingIndicator">
+        <img src="Assets/loader.png" alt="Loading..." class="loading-indicator__animation">
+        <p class="loading-indicator__wait-text">Loading... please wait.</p>
+    </div>
+    
+    <main class="landingpage">
+        <section class="landingpage__content">
+            <a href="login.html"><img class="landingpage__landing-logo" src="Assets/airbean-landing.svg" alt="Logo"></a>
         </section>
     </main>
     <script type="module" src="./scripts/app.js"></script>

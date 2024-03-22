@@ -9,26 +9,37 @@
 </head>
 
 <body>
-    <div class="content-wrapper">
-        <section class="header">
-            <nav class="nav-menu">
-                <img src="./Assets/navicon.svg" alt="Nav icon" class="hamburger-menu">
-            </nav>
-        </section>
+    <div class="menu-container">
+        <div class="content-wrapper content-wrapper--brown">
+            <header class="header">
+                <nav class="header__menu">
+                    <ul class="header__menu-list">
+                        <li class="header__menu-item"><a href="ProductPage.html" class="header__menu-link">Meny</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="aboutUs.html" class="header__menu-link">Vårt kaffe</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="profile.html" class="header__menu-link">Min profil</a></li>
+                        <hr class="header__menu-line">
+                        <li class="header__menu-item"><a href="statusPage.html" class="header__menu-link">Orderstatus</a></li>
+                    </ul>
+                </nav>
+                <button class="header__hamburger-menu" id="openMenuBtn" aria-label="Open menu"></button>
+            </header>
+
         <section class="login-form" id="loginForm">
 
             <section class="login-form__inner">
                 <img src="./Assets/logo-sml.svg" alt="Small logo" class="login-form__small-logo">
-                <h2 class="login-form__welcome">Välkommen till Airbean-familjen!</h2>
-                <h3 class="login-form__additional-text">Genom att skapa ett konto nedan kan du se och spara din orderhistorik</h3>
-                <form>
-                    <label for="username">Användarnamn:</label>
-                    <input class="login-form__text-field" type="login-form__text" name="username" required>
+                <h1 class="login-form__welcome">Välkommen till Airbean-familjen!</h1>
+                <h2 class="login-form__additional-text">Genom att logga in kan du se och spara din orderhistorik</h2>
+                <form class="login-form__form">
+                    <label class="login-form__label" for="username">Användarnamn:</label>
+                    <input class="login-form__text-field" id="username" type="login-form__text" name="username" required>
 
-                    <label for="password">Lösenord:</label>
-                    <input class="login-form__text-field" type="password" name="password" required>
+                    <label class="login-form__label" for="password">Lösenord:</label>
+                    <input class="login-form__text-field" id="password" type="password" name="password" required>
 
-                    <label>
+                    <label class="login-form__label">
                         <input class="login-form__gdpr-btn" type="checkbox" name="gdpr"> GDPR ok!
                     </label>
 
@@ -38,8 +49,9 @@
                 </form>
             </section>
         </section>
+        <footer class="footer footer--brown"></footer>
     </div>
-
+</div>
     <script type="module" src="./scripts/app.js"></script>
 </body>
 
